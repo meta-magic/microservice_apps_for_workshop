@@ -1,0 +1,18 @@
+<configuration>
+ 
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>'DateTime': %d{yyyy-MM-dd HH:mm:ss.SSSS}, 'Level': %p, 'Class': %C, 'Message' : %m%n</pattern>
+        </encoder>
+    </appender>
+ 
+ 
+    <root level="ERROR">
+        <appender-ref ref="STDOUT" />
+    </root>
+ 
+ 
+	<logger name="com.metamagic.auth" level="info"  additivity="false">
+	    <appender-ref ref="STDOUT" />
+	</logger>
+</configuration>
