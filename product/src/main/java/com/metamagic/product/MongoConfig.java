@@ -6,8 +6,8 @@ public class MongoConfig {
 
 	public Properties getDBConfig() {
 		
-		String dbhost = System.getenv("mongo_host");
-		String port = System.getenv("mongo_port");
+		String dbhost = System.getenv("MONO_HOST");
+		String port = System.getenv("MONO_PORT");
 
 		Properties properties = new Properties();
 		properties.put("spring.data.mongodb.database", "productdb");

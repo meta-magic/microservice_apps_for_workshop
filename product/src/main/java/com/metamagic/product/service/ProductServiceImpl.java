@@ -11,6 +11,7 @@ import com.metamagic.product.entities.ProductDetails;
 import com.metamagic.product.repo.ProductDetailsRepository;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -28,5 +29,10 @@ public class ProductServiceImpl implements ProductService {
 		productDetails.setId(UUID.randomUUID().toString());
 		productDetails.setAuditDetails(new AuditDetails(1, "system", new Date(), "system", new Date()));
 		repo.save(productDetails).subscribe();
+	}
+	
+	@Override
+	public Mono<ProductDetails> findById(String id) {
+		return repo.findById(id);
 	}
 }
