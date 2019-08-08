@@ -29,9 +29,10 @@ public class ProductReviewDetailsController {
 	private ProductReviewService service;
 	
 	@GetMapping(value = "/product/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Mono<ResponseBean>> findall(@PathVariable ("id") String id){		
+	public ResponseEntity<Mono<ResponseBean>> findall(@PathVariable ("id") String id){				
 		Flux<ProductReviewDetails> obj =  service.findByProductId(id);
-		ResponseBean response = new ResponseBean(true, "Productreview retrieved successfully", HttpStatus.OK+"",obj.collectList().block());
+		Object pr = obj.collectList().block();
+		ResponseBean response = new ResponseBean(true, "Productreview retrieved successfully", HttpStatus.OK+"",pr);
 		return new ResponseEntity<Mono<ResponseBean>>( Mono.justOrEmpty(response), HttpStatus.OK);
 	}
 

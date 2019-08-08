@@ -37,6 +37,7 @@ public class ProductDetails extends BaseEntity {
 	@Field(name = "price")
 	private Double price;
 
+	@JsonInclude(Include.NON_NULL)
 	@Field(name = "category")
 	private String category;
 	
