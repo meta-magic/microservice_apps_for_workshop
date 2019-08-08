@@ -6,6 +6,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +25,8 @@ public class ProductDetails extends BaseEntity {
 	@Id()
 	private String id;
 
-	@Field(name = "productId")
-	private String productId;
+	@Field(name = "productNo")
+	private String productNo;
 
 	@Field(name = "name")
 	private String name;
@@ -36,5 +39,8 @@ public class ProductDetails extends BaseEntity {
 
 	@Field(name = "category")
 	private String category;
+	
+	@JsonInclude(Include.NON_NULL)
+	private Object reviews;
 
 }

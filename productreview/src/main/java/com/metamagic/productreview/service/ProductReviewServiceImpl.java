@@ -21,6 +21,7 @@ public class ProductReviewServiceImpl implements ProductReviewService {
 	
 	@Override
 	public Flux<ProductReviewDetails> findByProductId(String productId){
+		System.out.println(productId);
 		return repo.findByProductId(productId);
 	}
 	

@@ -37,9 +37,12 @@ public class ProductDetailsController {
 
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Mono<ResponseBean>> findById(@PathVariable ("id") String id){		
-		Mono<ProductDetails> obj =  authService.findById(id);
-		ResponseBean response = new ResponseBean(true, "Products retrieved successfully", HttpStatus.OK+"",obj.block());
-		return new ResponseEntity<Mono<ResponseBean>>( Mono.justOrEmpty(response), HttpStatus.OK);
+		Mono<ResponseBean> responseBean =  authService.findById(id).flatMap(productDetails ->{
+			ResponseBean response = new ResponseBean(true, "Products retrieved successfully", HttpStatus.OK+"",productDetails);
+			return Mono.justOrEmpty(response);
+		});
+		
+		return new ResponseEntity<Mono<ResponseBean>>( responseBean, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

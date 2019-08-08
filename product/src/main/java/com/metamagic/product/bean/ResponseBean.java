@@ -1,5 +1,14 @@
 package com.metamagic.product.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ResponseBean {
 
 	private boolean sucess;
@@ -9,29 +18,5 @@ public class ResponseBean {
 	private String status;
 	
 	private Object data;
-
-	public ResponseBean(boolean sucess, String message, String status, Object data) {
-		super();
-		this.sucess = sucess;
-		this.message = message;
-		this.status = status;
-		this.data = data;
-	}
-
-	public boolean isSucess() {
-		return sucess;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public Object getData() {
-		return data;
-	}
-	
+ 
 }
