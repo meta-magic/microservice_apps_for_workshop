@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: authms-deploy
+  namespace: shoppingportal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: authms
+      zone: prod
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        name: authms
+        version: v1
+        release: stable
+        tier: fe
+        zone: prod
+        managed-by: m2
+    spec:
+      containers:
+        - name: authms-ctr
+          image: metamagicglobal/authservice_k8
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8082
+          env:
+          - name: MONO_HOST
+            valueFrom:
+              secretKeyRef: 
+                name: mongosecret
+                key: mongohost
+          - name: MONO_PORT
+            valueFrom:
+              secretKeyRef: 
+                name: mongosecret
+                key: mongoport

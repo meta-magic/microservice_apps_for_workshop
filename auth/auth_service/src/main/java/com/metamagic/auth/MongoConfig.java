@@ -22,6 +22,10 @@ public class MongoConfig {
 		properties.put("spring.data.mongodb.database", "authdb");
 		properties.put("spring.data.mongodb.host", dbhost);
 		properties.put("spring.data.mongodb.port", port);
+		
+		properties.put("spring.zipkin.base-url", "http://zipkin:9411/");
+		properties.put("spring.zipkin.baseUrl", "http://zipkin:9411/");
+
 		return properties;
 	}
 

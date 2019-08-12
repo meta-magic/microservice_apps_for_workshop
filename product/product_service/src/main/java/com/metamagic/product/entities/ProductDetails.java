@@ -34,6 +34,9 @@ public class ProductDetails extends BaseEntity {
 	@Field(name = "name")
 	private String name;
 
+	@Field(name = "primaryicon")
+	private String primaryicon;
+	
 	@JsonInclude(Include.NON_NULL)
 	@Field(name = "description")
 	private String description;
