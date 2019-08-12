@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -22,15 +23,18 @@ import lombok.Setter;
 @Document(value ="product_details")
 public class ProductDetails extends BaseEntity {
 
+	@JsonIgnore
 	@Id()
 	private String id;
 
+	@JsonInclude(Include.NON_NULL)
 	@Field(name = "productNo")
 	private String productNo;
 
 	@Field(name = "name")
 	private String name;
 
+	@JsonInclude(Include.NON_NULL)
 	@Field(name = "description")
 	private String description;
 

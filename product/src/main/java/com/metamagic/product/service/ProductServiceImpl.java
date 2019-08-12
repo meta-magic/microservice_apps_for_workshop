@@ -66,7 +66,6 @@ public class ProductServiceImpl implements ProductService {
 			return Mono.just(new ResponseBean());
 		}
 		String PRODUCT_REVIEW_URL = REVIEW_APP_BASE_URL + "/api/review/";
-
 		return WebClient.builder().baseUrl(PRODUCT_REVIEW_URL).defaultHeader(HttpHeaders.CONTENT_TYPE, MIME_TYPE)
 				.defaultHeader(HttpHeaders.USER_AGENT, USER_AGENT).build().get().uri("/product/" + productId).retrieve()
 				.bodyToMono(ResponseBean.class);

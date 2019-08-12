@@ -34,5 +34,6 @@ public class ShoppingCart extends BaseEntity {
 	@Field(name = "qty")
 	private Integer qty;
 
+	private Object productDetails;
 
 }
