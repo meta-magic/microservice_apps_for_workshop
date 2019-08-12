@@ -6,8 +6,12 @@ import java.util.UUID;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import com.metamagic.payment.bean.OrderDTO;
+import com.metamagic.payment.bean.ResponseBean;
 import com.metamagic.payment.entities.AuditDetails;
 import com.metamagic.payment.entities.Payment;
 import com.metamagic.payment.repo.ShoppingCartRepository;
@@ -20,6 +24,9 @@ import reactor.core.publisher.Mono;
 public class PaymentServiceImpl implements PaymentService {
 
 	private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(PaymentServiceImpl.class);
+
+	private static final String MIME_TYPE = "application/json";
+	private static final String USER_AGENT = "Payment WebClient";
 
 	@Autowired
 	private ShoppingCartRepository repo;
@@ -36,13 +43,37 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public void save(Payment shoppingCart) {
-		shoppingCart.calculateCartTotal();
-		shoppingCart.setId(UUID.randomUUID().toString());
-		shoppingCart.setPaymentId("ONL-"+Calendar.getInstance().getTimeInMillis());
-		shoppingCart.setStatus("success");
-		shoppingCart.setAuditDetails(new AuditDetails(1, "system", new Date(), "system", new Date()));
-		repo.save(shoppingCart).subscribe();
+	public void save(Payment payment) {
+		payment.calculateCartTotal();
+		payment.setId(UUID.randomUUID().toString());
+		payment.setPaymentId("ONL-"+Calendar.getInstance().getTimeInMillis());
+		payment.setStatus("success");
+		payment.setAuditDetails(new AuditDetails(1, "system", new Date(), "system", new Date()));
+		repo.save(payment).subscribe();
+		
+		this.createOrder(payment).subscribe();
+	}
+	
+	private Mono<ResponseBean>  createOrder(Payment payment){
+		
+		OrderDTO orderDto = new OrderDTO(payment.getId(), payment.getShoppintCart());
+		
+
+		String ORDER_APP_BASE_URL = System.getenv("ORDER_APP_BASE_URL"); // "http://localhost:8080";
+		if (ORDER_APP_BASE_URL == null) {
+			LOGGER.error("Unable to get ORDER_APP_BASE_URL from system env");
+			return Mono.just(new ResponseBean());
+		}
+		String ORDER_SAVE_URL = ORDER_APP_BASE_URL + "/api/order/";
+		
+		return WebClient.builder().baseUrl(ORDER_SAVE_URL)
+				.defaultHeader(HttpHeaders.CONTENT_TYPE, MIME_TYPE)
+				.defaultHeader(HttpHeaders.USER_AGENT, USER_AGENT)
+				.defaultHeader("tokenid", payment.getUserId())
+				.build().post().body(orderDto).retrieve()
+				.bodyToMono(ResponseBean.class);
+
+	
 	}
 
 }
