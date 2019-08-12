@@ -12,7 +12,7 @@
     </root>
  
  
-	<logger name="com.metamagic.product" level="info"  additivity="false">
+	<logger name="com.metamagic" level="info"  additivity="false">
 	    <appender-ref ref="STDOUT" />
 	</logger>
 </configuration>
