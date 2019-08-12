@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.metamagic.auth.bean.Authenticate;
-import com.metamagic.auth.bean.ResponseBean;
+import com.metamagic.auth.dto.Authenticate;
+import com.metamagic.auth.dto.ResponseBean;
 import com.metamagic.auth.entities.UserAuthDetails;
 import com.metamagic.auth.service.AuthService;
 

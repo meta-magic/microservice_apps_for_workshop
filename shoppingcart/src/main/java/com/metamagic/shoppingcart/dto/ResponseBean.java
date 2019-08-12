@@ -1,4 +1,4 @@
-package com.metamagic.product.bean;
+package com.metamagic.shoppingcart.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

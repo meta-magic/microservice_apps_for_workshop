@@ -1,4 +1,4 @@
-package com.metamagic.order.bean;
+package com.metamagic.order.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

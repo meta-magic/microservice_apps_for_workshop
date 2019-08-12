@@ -9,7 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.metamagic.product.bean.ResponseBean;
+import com.metamagic.product.dto.ResponseBean;
 import com.metamagic.product.entities.AuditDetails;
 import com.metamagic.product.entities.ProductDetails;
 import com.metamagic.product.repo.ProductDetailsRepository;

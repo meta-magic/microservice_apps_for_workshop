@@ -9,8 +9,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.metamagic.shoppingcart.bean.ResponseBean;
-import com.metamagic.shoppingcart.bean.ShoppingCartDTO;
+import com.metamagic.shoppingcart.dto.ResponseBean;
+import com.metamagic.shoppingcart.dto.ShoppingCartDTO;
 import com.metamagic.shoppingcart.entities.AuditDetails;
 import com.metamagic.shoppingcart.entities.ShoppingCart;
 import com.metamagic.shoppingcart.repo.ShoppingCartRepository;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.metamagic.productreview.bean.ResponseBean;
+import com.metamagic.productreview.dto.ResponseBean;
 import com.metamagic.productreview.entities.ProductReviewDetails;
 import com.metamagic.productreview.service.ProductReviewService;
 

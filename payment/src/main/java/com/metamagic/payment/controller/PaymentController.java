@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.metamagic.payment.bean.ResponseBean;
+import com.metamagic.payment.dto.ResponseBean;
 import com.metamagic.payment.entities.Payment;
 import com.metamagic.payment.service.PaymentService;
 

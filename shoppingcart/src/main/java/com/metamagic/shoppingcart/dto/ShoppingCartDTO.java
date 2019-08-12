@@ -1,4 +1,4 @@
-package com.metamagic.shoppingcart.bean;
+package com.metamagic.shoppingcart.dto;
 
 
 import java.util.ArrayList;

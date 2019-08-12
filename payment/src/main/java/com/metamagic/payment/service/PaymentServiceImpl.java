@@ -10,8 +10,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.metamagic.payment.bean.OrderDTO;
-import com.metamagic.payment.bean.ResponseBean;
+import com.metamagic.payment.dto.OrderDTO;
+import com.metamagic.payment.dto.ResponseBean;
 import com.metamagic.payment.entities.AuditDetails;
 import com.metamagic.payment.entities.Payment;
 import com.metamagic.payment.repo.ShoppingCartRepository;
@@ -38,7 +38,6 @@ public class PaymentServiceImpl implements PaymentService {
 	 
 	@Override
 	public Mono<Payment> findById(String id) {
-		// TODO Auto-generated method stub
 		return repo.findById(id);
 	}
 

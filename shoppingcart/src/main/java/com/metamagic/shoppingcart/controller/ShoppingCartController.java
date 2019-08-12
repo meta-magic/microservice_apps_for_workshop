@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.metamagic.shoppingcart.bean.ResponseBean;
+import com.metamagic.shoppingcart.dto.ResponseBean;
 import com.metamagic.shoppingcart.entities.ShoppingCart;
 import com.metamagic.shoppingcart.service.ShoppingCartService;
 

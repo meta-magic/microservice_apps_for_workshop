@@ -1,4 +1,4 @@
-package com.metamagic.payment.bean;
+package com.metamagic.payment.dto;
 
 import com.metamagic.payment.entities.ShoppingCart;
 

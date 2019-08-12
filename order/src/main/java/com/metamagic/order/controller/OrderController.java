@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.metamagic.order.bean.ResponseBean;
+import com.metamagic.order.dto.ResponseBean;
 import com.metamagic.order.entities.Order;
 import com.metamagic.order.service.OrderService;
 

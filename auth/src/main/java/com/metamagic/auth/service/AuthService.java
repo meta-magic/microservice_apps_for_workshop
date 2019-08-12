@@ -1,6 +1,6 @@
 package com.metamagic.auth.service;
 
-import com.metamagic.auth.bean.Authenticate;
+import com.metamagic.auth.dto.Authenticate;
 import com.metamagic.auth.entities.UserAuthDetails;
 
 import reactor.core.publisher.Mono;

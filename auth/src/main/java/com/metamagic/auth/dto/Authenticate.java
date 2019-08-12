@@ -1,4 +1,4 @@
-package com.metamagic.auth.bean;
+package com.metamagic.auth.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

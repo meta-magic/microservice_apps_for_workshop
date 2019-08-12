@@ -1,4 +1,4 @@
-package com.metamagic.productreview.bean;
+package com.metamagic.productreview.dto;
 
 public class ResponseBean {
 

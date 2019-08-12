@@ -1,6 +1,6 @@
 package com.metamagic.shoppingcart.service;
 
-import com.metamagic.shoppingcart.bean.ShoppingCartDTO;
+import com.metamagic.shoppingcart.dto.ShoppingCartDTO;
 import com.metamagic.shoppingcart.entities.ShoppingCart;
 
 import reactor.core.publisher.Flux;

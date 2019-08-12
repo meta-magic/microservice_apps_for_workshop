@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.metamagic.auth.bean.Authenticate;
+import com.metamagic.auth.dto.Authenticate;
 import com.metamagic.auth.entities.AuditDetails;
 import com.metamagic.auth.entities.UserAuthDetails;
 import com.metamagic.auth.repo.UserDetailsRepository;
@@ -28,7 +28,6 @@ public class AuthServiceImpl implements AuthService {
 		if (userAuthDetails != null) {
 			UserAuthDetails _userAuthDetails = userAuthDetails.block() ;
 			if(_userAuthDetails !=null){
-				System.out.println(password+"******_userAuthDetails********"+_userAuthDetails.getPassword() +" "+_userAuthDetails.getId());
 				authenticate.setValid(_userAuthDetails.getPassword().equals(password));
 				if(authenticate.isValid())
 					authenticate.setTokenId(_userAuthDetails.getId()); // CREATE JWT TOKEN				

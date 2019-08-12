@@ -1,4 +1,4 @@
-package com.metamagic.auth.bean;
+package com.metamagic.auth.dto;
 
 public class ResponseBean {
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.metamagic.product.bean.ResponseBean;
+import com.metamagic.product.dto.ResponseBean;
 import com.metamagic.product.entities.ProductDetails;
 import com.metamagic.product.service.ProductService;
 
