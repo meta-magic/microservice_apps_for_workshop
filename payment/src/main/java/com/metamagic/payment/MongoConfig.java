@@ -1,4 +1,4 @@
-package com.metamagic.auth;
+package com.metamagic.payment;
 
 import java.util.Properties;
 
@@ -8,7 +8,7 @@ public class MongoConfig {
 		
 		String dbhost = System.getenv("MONO_HOST");
 		String port = System.getenv("MONO_PORT");
-
+		
 		if(dbhost == null){
 			dbhost = "localhost";
 		}
@@ -17,9 +17,8 @@ public class MongoConfig {
 			port = "27017";
 		}
 
-		
 		Properties properties = new Properties();
-		properties.put("spring.data.mongodb.database", "authdb");
+		properties.put("spring.data.mongodb.database", "paymentsdb");
 		properties.put("spring.data.mongodb.host", dbhost);
 		properties.put("spring.data.mongodb.port", port);
 		return properties;

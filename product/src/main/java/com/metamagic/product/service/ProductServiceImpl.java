@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.metamagic.product.aop.ControllerAspect;
 import com.metamagic.product.bean.ResponseBean;
 import com.metamagic.product.entities.AuditDetails;
 import com.metamagic.product.entities.ProductDetails;
@@ -26,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
 
 	private static final String MIME_TYPE = "application/json";
 	private static final String USER_AGENT = "Product WebClient";
-	
+
 	@Autowired
 	private ProductDetailsRepository repo;
 
@@ -61,8 +60,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	private Mono<ResponseBean> fetchProductReveiws(String productId) {
-		String REVIEW_APP_BASE_URL = System.getenv("REVIEW_APP_BASE_URL"); //"http://localhost:8080";
-		if(REVIEW_APP_BASE_URL == null){
+		String REVIEW_APP_BASE_URL = System.getenv("REVIEW_APP_BASE_URL"); // "http://localhost:8080";
+		if (REVIEW_APP_BASE_URL == null) {
 			LOGGER.error("Unable to get REVIEW_APP_BASE_URL from system env");
 			return Mono.just(new ResponseBean());
 		}

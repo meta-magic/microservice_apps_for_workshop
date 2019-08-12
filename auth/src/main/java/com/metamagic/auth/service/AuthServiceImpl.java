@@ -25,11 +25,14 @@ public class AuthServiceImpl implements AuthService {
 	public Authenticate authenticate(String userId, String password) {
 		Authenticate authenticate = new Authenticate();
 		Mono<UserAuthDetails> userAuthDetails = repo.findByUserIdAndActive(userId, true);
-		if (userAuthDetails != null && userAuthDetails.block() != null) {
+		if (userAuthDetails != null) {
 			UserAuthDetails _userAuthDetails = userAuthDetails.block() ;
-			authenticate.setValid(_userAuthDetails.getPassword().equals(password));
-			if(authenticate.isValid())
-				authenticate.setTokenId(_userAuthDetails.getId()); // CREATE JWT TOKEN
+			if(_userAuthDetails !=null){
+				System.out.println(password+"******_userAuthDetails********"+_userAuthDetails.getPassword() +" "+_userAuthDetails.getId());
+				authenticate.setValid(_userAuthDetails.getPassword().equals(password));
+				if(authenticate.isValid())
+					authenticate.setTokenId(_userAuthDetails.getId()); // CREATE JWT TOKEN				
+			}
 		} else {
 			authenticate.setValid(false);
 		}
