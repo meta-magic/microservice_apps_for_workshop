@@ -4,7 +4,7 @@ metadata:
   name: auth-destination-rules
   namespace: shoppingportal    
 spec:
-  host: authservice.shoppingportal.svc.cluster.local
+  host: auth-svc.shoppingportal.svc.cluster.local
   subsets:
   - name: stable
     labels:
