@@ -21,7 +21,6 @@ import lombok.Setter;
 @Document(value ="payment")
 public class Payment extends BaseEntity {
 
-	@JsonIgnore
 	@Id()
 	private String id;
 
