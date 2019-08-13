@@ -40,5 +40,7 @@ curl -H "Content-Type: application/json" -H "tokenid: 73e54dcb-e8d3-4757-bb02-e0
 curl -d '{"shoppintCart":[{"productId":"33934cdd-0b6f-48c5-9568-0b30426bad11","price":200,"qty":1},{"productId":"33934cdd-0b6f-48c5-9568-0b30426bad11","price":200,"qty":1}]}' -H "Content-Type: application/json" -H "tokenid: 73e54dcb-e8d3-4757-bb02-e0da1a5d9761" -X POST http://35.227.30.18/paymentms/api/payment/
 
 # Payment by User Id
-
 curl -H "Content-Type: application/json" -H "tokenid: 73e54dcb-e8d3-4757-bb02-e0da1a5d9761"  -X GET  http://35.227.30.18/paymentms/api/payment/
+
+# Payment by id
+curl -H "Content-Type: application/json" -H "tokenid: 73e54dcb-e8d3-4757-bb02-e0da1a5d9761"  -X GET  http://35.227.30.18/paymentms/api/payment/33934cdd-0b6f-48c5-9568-0b30426bad11
