@@ -9,7 +9,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class CartComponent implements OnInit {
   cartInfo: ICart;
-  constructor(private _httpClient: HttpClient, private _router: Router, private route: ActivatedRoute) { }
+  constructor(private _httpClient: HttpClient, private _router: Router, private route: ActivatedRoute) {
+    this.cartInfo = new ICart();
+  }
 
   ngOnInit() {
     this.getCartData();

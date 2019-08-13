@@ -1,7 +1,7 @@
 /**
  * Created by dattaram on 12/8/19.
  */
-export interface ICart {
+export class ICart {
   sum: number;
   shoppingCart: any[];
 }
