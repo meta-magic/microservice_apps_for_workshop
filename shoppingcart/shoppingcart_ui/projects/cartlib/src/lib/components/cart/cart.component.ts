@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {CartResponse} from '../../models/cart.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SERVICE_URL} from "../../constant/service.constant";
 import {HttpService} from "../../services/http.service";
 import {CommonService} from "../../services/common.service";
+import {select, Store} from '@ngrx/store';
+import {CartNamespace} from "../../store/state";
+import {AddToCart} from "../../store/action";
+
 
 @Component({
   selector: 'lib-cartlib',
@@ -15,12 +18,20 @@ export class CartComponent implements OnInit {
   constructor(  private _httpService: HttpService,
                 public _cService: CommonService,
                 private _router: Router,
+                private _store: Store<CartNamespace.ICart>,
                 private route: ActivatedRoute) {
     this.cartInfo = new CartResponse();
+
+      this._store.pipe(select(CartNamespace.getState)).subscribe((cartState: any) => {
+          debugger;
+          if (cartState) {
+              this.cartInfo = <CartResponse>cartState.cartData;
+          }
+
+      });
   }
 
   ngOnInit() {
-    debugger;
     this.getCartData();
   }
 
@@ -28,8 +39,7 @@ export class CartComponent implements OnInit {
     this._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
         .then((res: any) => {
           this._cService.showLoader = false;
-          debugger;
-          this.cartInfo = <CartResponse>res.data;
+            this._store.dispatch(new AddToCart(res.data));
         });
   }
 

@@ -26,6 +26,7 @@ export class CatlogComponent implements OnInit {
               public _cService: CommonService,
               private _cookieService: CookieService,
               private store: Store<ProductNamespace.IProduct>) {
+
     this.store.pipe(select(ProductNamespace.getState)).subscribe((productState: any) => {
       if (productState) {
         this.productList = productState.productData;

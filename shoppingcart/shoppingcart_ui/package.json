@@ -24,6 +24,8 @@
     "ngx-cookie-service": "^2.2.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
+    "@ngrx/store": "7.3.0",
+    "redux": "4.0.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

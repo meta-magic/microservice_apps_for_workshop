@@ -6,6 +6,9 @@ import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {PaymentComponent} from './components/payment/payment.component';
 import {FormsModule} from "@angular/forms";
+import {StoreModule} from "@ngrx/store";
+import {CartReducer} from "./store/reducer";
+
 
 export const route = [{
   path: '', component: CartComponent
@@ -19,6 +22,7 @@ export const route = [{
   declarations: [CartComponent, PaymentComponent],
   imports: [
     CommonModule, HttpClientModule, FormsModule,
+    StoreModule.forFeature('cartState', CartReducer),
     AmexioWidgetModule, RouterModule.forChild(route)
   ],
 })

@@ -3,7 +3,7 @@
                  [data]="ordersList"
                  [page-size]="10">
   <amexio-data-table-column
-    [data-index]="'orderId'"
+    [data-index]="'orderNo'"
     [data-type]="'string'"
     [text]="'Order Ref ID'">
   </amexio-data-table-column>
@@ -14,12 +14,12 @@
     [text]="'Order Date'">
   </amexio-data-table-column>
   <amexio-data-table-column
-    [data-index]="'total'"
+    [data-index]="'sum'"
     [data-type]="'string'"
     [text]="'Total'">
   </amexio-data-table-column>
   <amexio-data-table-column
-    [data-index]="''"
+    [data-index]="'status'"
     [data-type]="'string'"
     [text]="'Status'">
     <ng-template #amexioBodyTmpl let-column let-row="row">
