@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: shoppingcartms-ctr
-          image: metamagicglobal/shoppingportalservice_k8
+          image: metamagicglobal/shoppingcartservice_k8
           imagePullPolicy: Always
           ports:
           - containerPort: 8082
