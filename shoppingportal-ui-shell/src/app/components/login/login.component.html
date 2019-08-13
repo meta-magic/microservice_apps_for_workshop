@@ -23,14 +23,11 @@
                                          [allow-blank]="false"> </amexio-password-input>
                 </amexio-layout-item>
                 <amexio-layout-item>
-                  <amexio-checkbox [field-label]="'Subscribe to newsletter'"></amexio-checkbox>
-                </amexio-layout-item>
-                 <amexio-layout-item>
-                    <span (click)="onAddUserHandle()" style="cursor: pointer;font-size: 15px;color:blue;text-decoration:underline;margin-left:70%">Add User</span>
-                  </amexio-layout-item>
-                <amexio-layout-item>
-                  <amexio-button [label]="'Get Started'" [type]="'yellow'" [tooltip]="'Get Started'" [block]="true"
-                                 (onClick)="onLoginHandle()">
+                  <br/>
+                  <amexio-button [label]="'Login'" [type]="'theme-color'" [tooltip]="'Login'" [block]="true" (onClick)="onLoginHandle()">
+                  </amexio-button>
+                  <br/>
+                  <amexio-button [label]="'Sign Up'" [type]="'theme-backgroundcolor'" [tooltip]="'Sign Up'" [block]="true" (onClick)="onAddUserHandle()">
                   </amexio-button>
                 </amexio-layout-item>
               </amexio-layout-columns>
