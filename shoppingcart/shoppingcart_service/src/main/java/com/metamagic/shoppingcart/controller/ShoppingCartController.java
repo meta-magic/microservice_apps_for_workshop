@@ -50,7 +50,7 @@ public class ShoppingCartController {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
 				.getRequest();
 		String tokenId = request.getHeader("tokenid");
-		if(tokenId == null){
+		if(tokenId != null){
 			shoppingcart.setUserId(tokenId);
 		}
 		
