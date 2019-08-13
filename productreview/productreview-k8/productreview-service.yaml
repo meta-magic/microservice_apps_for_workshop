@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: productreview-svc
+  namespace: shoppingportal
+spec:
+  type: LoadBalancer
+  selector: 
+    name: productreviewms
+  ports:
+  - protocol: TCP
+    targetPort: 8082
+    port: 80
+    name: http

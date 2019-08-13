@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: auth-vs
+  name: order-vs
   namespace: shoppingportal  
 spec:
   gateways:
@@ -11,9 +11,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /authms
+        prefix: /orderms
     route:
     - destination:
-        host: auth-svc.shoppingportal.svc.cluster.local
+        host: order-svc.shoppingportal.svc.cluster.local
         port:
           number: 80

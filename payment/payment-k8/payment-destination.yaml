@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: payment-destination-rules
+  namespace: shoppingportal    
+spec:
+  host: payment-svc.shoppingportal.svc.cluster.local
+  subsets:
+  - name: stable
+    labels:
+      version: v1

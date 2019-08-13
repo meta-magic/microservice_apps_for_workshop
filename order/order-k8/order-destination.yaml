@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: order-destination-rules
+  namespace: shoppingportal    
+spec:
+  host: order-svc.shoppingportal.svc.cluster.local
+  subsets:
+  - name: stable
+    labels:
+      version: v1

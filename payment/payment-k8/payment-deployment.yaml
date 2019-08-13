@@ -1,13 +1,13 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: authms-deploy
+  name: paymentms-deploy
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: authms
+      name: paymentms
       zone: prod
   minReadySeconds: 10
   strategy:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        name: authms
+        name: paymentms
         version: v1
         release: stable
         tier: be
@@ -26,8 +26,8 @@ spec:
         managed-by: m2
     spec:
       containers:
-        - name: authms-ctr
-          image: metamagicglobal/authservice_k8
+        - name: paymentms-ctr
+          image: metamagicglobal/paymentservice_k8
           imagePullPolicy: Always
           ports:
           - containerPort: 8082

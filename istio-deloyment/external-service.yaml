@@ -1,8 +1,0 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: minikube-mongo-host
-  namespace: shoppingportal
-spec:
-  type: ExternalName
-  externalName: 192.168.2.4
