@@ -1,13 +1,13 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: shoppingportalms-deploy
+  name: shoppingcartms-deploy
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: shoppingportalms
+      name: shoppingcartms
       zone: prod
   minReadySeconds: 10
   strategy:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        name: shoppingportalms
+        name: shoppingcartms
         version: v1
         release: stable
         tier: be
@@ -26,7 +26,7 @@ spec:
         managed-by: m2
     spec:
       containers:
-        - name: shoppingportalms-ctr
+        - name: shoppingcartms-ctr
           image: metamagicglobal/shoppingportalservice_k8
           imagePullPolicy: Always
           ports:

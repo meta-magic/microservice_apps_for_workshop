@@ -29,6 +29,6 @@ curl -H "Content-Type: application/json" -X GET http://35.227.30.18/productrevie
 
 #Add to cart
 
-curl -d '{"userId":"73e54dcb-e8d3-4757-bb02-e0da1a5d9761","productId":"d383add3-3761-4bc9-9e7f-8d8c4103628e","price":200,"qty":1}' -H "Content-Type: application/json" -X POST http://35.227.30.18/shoppingcartms/api/shoppingcart/
+curl -d '{"userId":"73e54dcb-e8d3-4757-bb02-e0da1a5d9761","productId":"d383add3-3761-4bc9-9e7f-8d8c4103628e","price":200,"qty":1}' -H "Content-Type: application/json" -X POST http://35.227.30.18/shoppingportalms/api/shoppingcart/
 
 curl -H "Content-Type: application/json" -X GET http://35.227.30.18/productreviewms/api/review/1a2733e9-a602-4bf5-97c2-168b2a3b395e

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: shoppingportal-svc
+  name: shoppingcart-svc
   namespace: shoppingportal
 spec:
   type: LoadBalancer
   selector: 
-    name: shoppingportalms
+    name: shoppingcartms
   ports:
   - protocol: TCP
     targetPort: 8082
