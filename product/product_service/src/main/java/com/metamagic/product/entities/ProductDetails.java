@@ -23,7 +23,6 @@ import lombok.Setter;
 @Document(value ="product_details")
 public class ProductDetails extends BaseEntity {
 
-	@JsonIgnore
 	@Id()
 	private String id;
 
