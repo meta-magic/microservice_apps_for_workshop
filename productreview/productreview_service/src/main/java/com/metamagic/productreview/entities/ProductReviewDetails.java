@@ -25,11 +25,9 @@ import lombok.Setter;
 @Document(value ="product_review_details")
 public class ProductReviewDetails extends BaseEntity {
 
-	@JsonIgnore
 	@Id()
 	private String id;
 
-	@JsonIgnore
 	@Field(name = "productId")
 	private String productId;
 

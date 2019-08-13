@@ -11,7 +11,7 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /shoppingportalms
+        prefix: /shoppingcartms
     route:
     - destination:
         host: shoppingportal-svc.shoppingportal.svc.cluster.local

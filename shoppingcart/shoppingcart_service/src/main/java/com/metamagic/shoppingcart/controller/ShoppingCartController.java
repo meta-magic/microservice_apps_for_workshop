@@ -47,6 +47,13 @@ public class ShoppingCartController {
 	@PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Mono<ResponseBean>> save(@RequestBody ShoppingCart shoppingcart) {
 		
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
+				.getRequest();
+		String tokenId = request.getHeader("tokenid");
+		if(tokenId == null){
+			shoppingcart.setUserId(tokenId);
+		}
+		
 		service.save(shoppingcart);
 		ResponseBean response = new ResponseBean(true, "Record saved successfully", HttpStatus.OK + "", shoppingcart);
 		return new ResponseEntity<Mono<ResponseBean>>(Mono.justOrEmpty(response), HttpStatus.OK);
