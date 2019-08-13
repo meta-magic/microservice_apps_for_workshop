@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "message": "Data retrieved successfully",
+  "code": "success",
+  "response": [
+    {
+      "id": "ad41de67-618a-4812-ab50-fabcf40fa307",
+      "name": "Iwatch",
+      "price": 30000,
+      "desc": "IWatch",
+      "image": "assets/images/iwatch.jpg"
+    },
+    {
+      "id": "feb6965e-3e8d-4c5a-b6ac-caf029ec259b",
+      "name": "Mac Pro",
+      "price": 250000,
+      "desc": "Macbook",
+      "image": "assets/images/macbook.jpg"
+    },
+    {
+      "id": "6adee1c1-db7c-4217-84e8-429f3b20939f",
+      "name": "Iphone 7",
+      "price": 40000,
+      "desc": "Iphone 7",
+      "image": "assets/images/iphone7.jpg"
+    },
+    {
+      "id": "1b3c0021-6f4f-4751-b3eb-c34a9b503209",
+      "name": "Tablet",
+      "price": 20000,
+      "desc": "Samsung tablet",
+      "image": "assets/images/samsungtablet.jpeg"
+    }
+  ]
+}

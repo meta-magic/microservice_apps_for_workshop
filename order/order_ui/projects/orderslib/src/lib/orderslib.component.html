@@ -1,0 +1,29 @@
+<amexio-datagrid title="Previous Orders"
+                 [data]="ordersList"
+                 [page-size]="10">
+  <amexio-data-table-column
+    [data-index]="'orderId'"
+    [data-type]="'string'"
+    [text]="'Order Ref ID'">
+  </amexio-data-table-column>
+  <amexio-data-table-column
+    [sort]="false"
+    [data-index]="'orderDate'"
+    [data-type]="'string'"
+    [text]="'Order Date'">
+  </amexio-data-table-column>
+  <amexio-data-table-column
+    [data-index]="'total'"
+    [data-type]="'string'"
+    [text]="'Total'">
+  </amexio-data-table-column>
+  <amexio-data-table-column
+    [data-index]="''"
+    [data-type]="'string'"
+    [text]="'Status'">
+    <ng-template #amexioBodyTmpl let-column let-row="row">
+      <amexio-label class="fa fa-circle fa-lg" [ngClass]="{'green': row.paid === true , 'red' : row.paid === false}"></amexio-label>
+      &nbsp;{{row.status}}
+    </ng-template>
+  </amexio-data-table-column>
+</amexio-datagrid>

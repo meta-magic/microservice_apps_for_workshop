@@ -1,0 +1,21 @@
+<amexio-nav  [enable-side-nav-position]="false"
+            [title]="'Shopping Cart'"
+            [logo]="'assets/images/product.png'">
+  <amexio-nav-item position-right [type]="'link'" [icon]="'fa fa-plus'" [title]="'Add Product'" (onNavItemClick)="addProductHandle($event)">
+  </amexio-nav-item>
+  <amexio-nav-item position-right [type]="'link'" [icon]="'fa fa-tasks'" [title]="'Catlog'" (onNavItemClick)="catlogHandle($event)">
+  </amexio-nav-item>
+  <amexio-nav-item position-right [type]="'link'" [icon]="'fa fa-shopping-cart'" [title]="'My Cart  ' + (cartCount == 0 ? '' : cartCount) " (onNavItemClick)="cartHandle($event)">
+  </amexio-nav-item>
+  <amexio-nav-item position-right [type]="'link'" [icon]="'fa fa-first-order'" [title]="'My Order'" (onNavItemClick)="orderHandle($event)">
+  </amexio-nav-item>
+  <amexio-nav-item position-right [type]="'link'" [icon]="'fa fa-sign-out'" [title]="'LogOut'" (onNavItemClick)="logOutHandle($event)">
+  </amexio-nav-item>
+
+</amexio-nav>
+
+<amexio-row>
+  <amexio-column [size]="12" style="padding-top: 80px">
+    <router-outlet></router-outlet>
+  </amexio-column>
+</amexio-row>

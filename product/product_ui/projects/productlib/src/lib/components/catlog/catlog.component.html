@@ -1,0 +1,40 @@
+<amexio-row>
+  <amexio-column [size]="'3'" *ngFor="let data of productList">
+    <amexio-card-ce >
+      <amexio-header-ce [height]="'30px'" align="start" [color]="'white'"  [background]="'linear-gradient(to right, 	#A52A2A, 	#A52A2A, 	#A52A2A)'">
+        <amexio-label [size]="'medium'">
+          {{data.name}}
+        </amexio-label>
+      </amexio-header-ce>
+      <amexio-body-ce [align]="'start'">
+        <amexio-row>
+          <amexio-column [size]="12" [fit]="true">
+            <amexio-image [path]="data.image" [height]="'200px'">
+            </amexio-image>
+          </amexio-column>
+          <amexio-column [size]="12">
+            <amexio-label [size]="'small'">
+              Price: {{data.price}} INR
+            </amexio-label>
+          </amexio-column>
+        </amexio-row>
+
+      </amexio-body-ce>
+      <amexio-action-ce [align]="'space-between'" [border-top]="true">
+        <amexio-button [label]="'Details'"
+                       [type]="'primary'"
+                       (onClick)="moreHandle(data)"
+                       [tooltip]="'more'">
+        </amexio-button>
+        <amexio-button [label]="'Add To Cart'"
+                       [type]="'primary'"
+                       [icon]="'fa fa-shopping-cart'"
+                       (onClick)="addToCartHandle(data)"
+                       [tooltip]="'buy'">
+        </amexio-button>
+      </amexio-action-ce>
+    </amexio-card-ce>
+  </amexio-column>
+</amexio-row>
+
+

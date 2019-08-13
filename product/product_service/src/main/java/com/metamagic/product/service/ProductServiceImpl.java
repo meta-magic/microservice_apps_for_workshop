@@ -1,5 +1,6 @@
 package com.metamagic.product.service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -37,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void save(ProductDetails productDetails) {
 		productDetails.setId(UUID.randomUUID().toString());
+		productDetails.setPrimaryicon("PD_Primary_Image"+Calendar.getInstance().getTimeInMillis()+".jpeg");
 		productDetails.setAuditDetails(new AuditDetails(1, "system", new Date(), "system", new Date()));
 		repo.save(productDetails).subscribe();
 	}

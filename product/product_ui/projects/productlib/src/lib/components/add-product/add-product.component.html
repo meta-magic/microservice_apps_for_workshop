@@ -1,0 +1,71 @@
+<amexio-row>
+  <amexio-column [size]="'3'">
+  </amexio-column>
+  <amexio-column [size]="'6'">
+    <amexio-card-ce>
+      <amexio-header-ce [height]="'30px'" align="start" [color]="'white'"  [background]="'linear-gradient(to right, 	#A52A2A, 	#A52A2A, 	#A52A2A)'">
+        <amexio-label [size]="'medium'">
+          Add Product
+        </amexio-label>
+      </amexio-header-ce>
+      <amexio-body-ce [align]="'start'">
+        <amexio-row>
+          <amexio-column [size]="12">
+            <amexio-text-input field-label="Name"
+                               name="name"
+                               [(ngModel)]="product.name"
+                               place-holder="Please enter product name">
+            </amexio-text-input>
+          </amexio-column>
+          <amexio-column [size]="12">
+            <amexio-textarea-input
+                                   [field-label]="'Description'"
+                                   name ="Address"
+                                   [place-holder]="'Please enter product description'"
+                                   [rows]="'2'"
+                                   [(ngModel)]="product.description"
+                                   [columns]="'2'">
+            </amexio-textarea-input>
+          </amexio-column>
+          <amexio-column [size]="12">
+            <amexio-text-input field-label="Price"
+                               name="price"
+                               [(ngModel)]="product.price"
+                               place-holder="Please enter price">
+            </amexio-text-input>
+          </amexio-column>
+        </amexio-row>
+
+      </amexio-body-ce>
+      <amexio-action-ce [align]="'end'" [border-top]="true">
+        <amexio-button [label]="'Save'"
+                       [type]="'primary'"
+                       [icon]="'fa fa-floppy-o'"
+                       (onClick)="addProductHandle()"
+                       [tooltip]="'save'">
+        </amexio-button>
+      </amexio-action-ce>
+    </amexio-card-ce>
+  </amexio-column>
+  <amexio-column [size]="'3'">
+  </amexio-column>
+</amexio-row>
+
+
+<amexio-spinner [show]="_cService.showLoader" [type]="'fadingcircle'" [vertical-position]="'center'"
+                [horizontal-position]="'center'" [color]="'blue'">
+</amexio-spinner>
+
+
+<amexio-notification
+  [data]="_cService.infoMsgCollection"
+  [vertical-position]="'top'"
+  [horizontal-position]="'right'"
+  [close-on-escape] ="true"
+  [background-color]="'green'"
+  [auto-dismiss-msg]="true"
+  [icon]="'fa fa-check-square-o fa-fw'"
+  [auto-dismiss-msg-interval]="2000">
+
+</amexio-notification>
+

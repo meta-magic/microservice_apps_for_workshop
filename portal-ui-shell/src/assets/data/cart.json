@@ -1,0 +1,73 @@
+{
+  "sucess": true,
+  "message": "Record retrieved successfully",
+  "status": "200 OK",
+  "data": {
+    "shoppingCart": [
+      {
+        "id": "73089287-7f09-4906-bed6-cb4f7ab60478",
+        "price": 200.0,
+        "qty": 1,
+        "productDetails": {
+          "name": "name",
+          "description": "description",
+          "price": 100.0,
+          "primaryicon":"",
+          "reviews": [
+            {
+              "user": "user",
+              "reviewdescription": "reviewdescription",
+              "rating": 5,
+              "reviewdate": "2019-08-08T07:30:17.086+0000"
+            },
+            {
+              "user": "user",
+              "reviewdescription": "reviewdescription",
+              "rating": 5,
+              "reviewdate": "2019-08-08T07:30:20.647+0000"
+            },
+            {
+              "user": "user",
+              "reviewdescription": "reviewdescription",
+              "rating": 5,
+              "reviewdate": "2019-08-08T11:19:41.454+0000"
+            }
+          ]
+        }
+      },
+      {
+        "id": "5d98e502-4b60-49d2-8813-6886bf03418a",
+        "userId": "814ff2a8-a505-4360-bd3e-29563975d4d3",
+        "productId": "33934cdd-0b6f-48c5-9568-0b30426bad11",
+        "price": 200.0,
+        "qty": 1,
+        "productDetails": {
+          "name": "name",
+          "description": "description",
+          "price": 100.0,
+          "reviews": [
+            {
+              "user": "user",
+              "reviewdescription": "reviewdescription",
+              "rating": 5,
+              "reviewdate": "2019-08-08T07:30:17.086+0000"
+            },
+            {
+              "user": "user",
+              "reviewdescription": "reviewdescription",
+              "rating": 5,
+              "reviewdate": "2019-08-08T07:30:20.647+0000"
+            },
+            {
+              "user": "user",
+              "reviewdescription": "reviewdescription",
+              "rating": 5,
+              "reviewdate": "2019-08-08T11:19:41.454+0000"
+            }
+          ]
+        }
+      }
+    ],
+    "sum": 400.0
+  }
+}

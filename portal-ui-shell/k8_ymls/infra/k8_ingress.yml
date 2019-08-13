@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: shoppingportal-ingress
+  namespace: shoppingportal
+spec:
+   rules:
+   - http:
+      paths:
+      - path: /mainshell/*
+        backend:
+          serviceName: mainshell-svc
+          servicePort: 80
+      - path: /order/*
+        backend:
+          serviceName: order-svc
+          servicePort: 80
+      - path: /product/*
+        backend:
+          serviceName: product-svc
+          servicePort: 80
