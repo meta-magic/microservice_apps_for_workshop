@@ -1,5 +1,5 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import { OrderslibComponent } from './orderslib.component';
+import { OrdersComponent } from './components/orders.component';
 import {RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
@@ -13,17 +13,16 @@ const routes: Routes = [
     pathMatch: 'full'
   },{
     path: 'all',
-    component: OrderslibComponent
+    component: OrdersComponent
   },
 ];
 
 @NgModule({
-  declarations: [OrderslibComponent],
+  declarations: [OrdersComponent],
   imports: [
     CommonModule, HttpClientModule,
     RouterModule.forChild(routes), AmexioWidgetModule
   ],
-  exports: [OrderslibComponent]
 })
 export class OrderslibModule {
   static forRoot(): ModuleWithProviders {

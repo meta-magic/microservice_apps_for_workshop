@@ -1,3 +1,4 @@
+<h2 *ngIf="ordersList.length === 0"> No Record Found.</h2>
 <amexio-datagrid title="Previous Orders"
                  [data]="ordersList"
                  [page-size]="10">
@@ -27,3 +28,4 @@
     </ng-template>
   </amexio-data-table-column>
 </amexio-datagrid>
+
