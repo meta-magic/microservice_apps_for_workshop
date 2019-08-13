@@ -1,50 +1,53 @@
-<amexio-row>
-  <amexio-column [size]="'12'">
-    <amexio-datagrid [enable-column-filter]="false"
-                     title="Cart Item "
-                     [enable-checkbox]="false"
-                     [data]="cartInfo.shoppingCart"
-                     [page-size]="10">
-      <amexio-data-table-column
-        [data-index]="'icon'"
-        [data-type]="'string'"
-        [hidden]="false"
-        [text]="'Product'">
-      </amexio-data-table-column>
-      <amexio-data-table-column
-        [sort]="false"
-        [data-index]="'countryCode1'"
-        [data-type]="'string'"
-        [hidden]="false"
-        [text]="'Details'">
+<ng-container *ngIf="cartInfo">
+  <amexio-row>
+    <amexio-column [size]="'12'">
+      <amexio-datagrid [enable-column-filter]="false"
+                       title="Cart Item "
+                       [enable-checkbox]="false"
+                       [data]="cartInfo.shoppingCart"
+                       [page-size]="10">
+        <amexio-data-table-column
+                [data-index]="'icon'"
+                [data-type]="'string'"
+                [hidden]="false"
+                [text]="'Product'">
+        </amexio-data-table-column>
+        <amexio-data-table-column
+                [sort]="false"
+                [data-index]="'countryCode1'"
+                [data-type]="'string'"
+                [hidden]="false"
+                [text]="'Details'">
 
-        <ng-template #amexioBodyTmpl let-column let-row="row">
-          <amexio-row>
-            <amexio-column [size]="'12'">
-              <amexio-label><b>Name:</b> {{row?.productDetails?.name}}</amexio-label><br><br>
-              <amexio-label><b>Price:</b> {{row.price}}</amexio-label><br><br>
-              <amexio-label><b>Quantity:</b> {{row.qty}}</amexio-label><br><br>
+          <ng-template #amexioBodyTmpl let-column let-row="row">
+            <amexio-row>
+              <amexio-column [size]="'12'">
+                <amexio-label><b>Name:</b> {{row?.productDetails?.name}}</amexio-label><br><br>
+                <amexio-label><b>Price:</b> {{row.price}}</amexio-label><br><br>
+                <amexio-label><b>Quantity:</b> {{row.qty}}</amexio-label><br><br>
 
-            </amexio-column>
-          </amexio-row>
-        </ng-template>
-      </amexio-data-table-column>
-    </amexio-datagrid>
+              </amexio-column>
+            </amexio-row>
+          </ng-template>
+        </amexio-data-table-column>
+      </amexio-datagrid>
 
-  </amexio-column>
-</amexio-row>
-<amexio-row>
-  <amexio-column [size]="'10'">
-  </amexio-column>
-  <amexio-column [size]="'2'">
-    <amexio-label><b>Sum Total:</b> {{cartInfo.sum}}</amexio-label><br><br>
-    <amexio-button [label]="'Proceed To Pay'"
-                   [block]="true"
-                   [type]="'primary'"
-                   [icon]="'fa fa-arrow-right'"
-                   [tooltip]="'Background Button'"
-                   (onClick)="payClickHandle($event)">
-    </amexio-button>
-  </amexio-column>
+    </amexio-column>
+  </amexio-row>
+  <amexio-row>
+    <amexio-column [size]="'10'">
+    </amexio-column>
+    <amexio-column [size]="'2'">
+      <amexio-label><b>Sum Total:</b> {{cartInfo.sum}}</amexio-label><br><br>
+      <amexio-button [label]="'Proceed To Pay'"
+                     [block]="true"
+                     [type]="'primary'"
+                     [icon]="'fa fa-arrow-right'"
+                     [tooltip]="'Background Button'"
+                     (onClick)="payClickHandle($event)">
+      </amexio-button>
+    </amexio-column>
 
-</amexio-row>
+  </amexio-row>
+</ng-container>
+

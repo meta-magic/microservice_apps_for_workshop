@@ -47,7 +47,6 @@ export class CatlogComponent implements OnInit {
   }
 
   addToCartHandle(product: Product) {
-    debugger;
     const requestObject = {};
           requestObject['userId'] = this._cookieService.get('tokenId');
           requestObject['productId'] = product.id;

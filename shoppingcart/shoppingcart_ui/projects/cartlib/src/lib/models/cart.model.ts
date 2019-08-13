@@ -1,7 +1,7 @@
 /**
  * Created by dattaram on 12/8/19.
  */
-export class ICart {
+export class CartResponse {
   sum: number;
-  shoppingCart: any[];
+  shoppingCart: any[] = [];
 }
