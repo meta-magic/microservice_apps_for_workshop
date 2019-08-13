@@ -3,6 +3,7 @@
  */
 export const BASE_URl = 'http://35.227.30.18/';
 export const SERVICE_URL = {
-  ADD_PRODUCT : BASE_URl + 'productms/api/product/'
+  ADD_PRODUCT : BASE_URl + 'productms/api/product/',
+  GET_ALL_PRODUCT : BASE_URl + 'productms/api/product/',
 };
 

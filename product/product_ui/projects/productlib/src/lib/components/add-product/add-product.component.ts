@@ -6,7 +6,6 @@ import {SERVICE_URL} from "../../constant/service.constant";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {ProductNamespace} from "../../store/state";
-import {AddProduct} from "../../store/action";
 
 @Component({
   selector: 'app-add-product',
@@ -26,24 +25,21 @@ export class AddProductComponent implements OnInit {
   }
 
   addProductHandle() {
+    // this._store.dispatch(new AddProduct(this.product));
+   // this._router.navigate(['../catlog'], {relativeTo: this._route});
 
-    this._store.dispatch(new AddProduct(this.product));
-    this._router.navigate(['../catlog'], {relativeTo: this._route});
-
-/*    try {
+    try {
       this._httpService.restCall(SERVICE_URL.ADD_PRODUCT, 'post', this.product).toPromise()
         .then((res: any) => {
           this._cService.showLoader = false;
           this._cService.infoMsgCollection = [];
           this._cService.infoMsgCollection.push(res.message);
-          this._store.dispatch(new AddProduct(res.data));
-          setTimeout(() => {
-            this.product = new Product();
-            this._router.navigate(['../catlog'], {relativeTo: this._route});
-          }, 2000);
+          this.product = new Product();
+          this._router.navigate(['../catlog'], {relativeTo: this._route});
+
         });
     } catch (error) {
-    }*/
+    }
   }
 
 }

@@ -7,7 +7,7 @@ import {AddProductComponent} from "./components/add-product/add-product.componen
 import {CatlogComponent} from "./components/catlog/catlog.component";
 import {StoreModule} from "@ngrx/store";
 import {ProductReducer} from "./store/reducer";
-import {MoreComponent} from "./components/more/more.component";
+import { ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {FormsModule} from "@angular/forms";
 
 
@@ -27,13 +27,13 @@ const routes: Routes = [
     component: AddProductComponent
   },
   {
-    path: 'more',
-    component: MoreComponent
+    path: 'catlog/:id',
+    component: ProductDetailsComponent
   }
 ];
 
 @NgModule({
-  declarations: [CatlogComponent, AddProductComponent, MoreComponent],
+  declarations: [CatlogComponent, AddProductComponent, ProductDetailsComponent],
   imports: [
     CommonModule, HttpClientModule, FormsModule,
     StoreModule.forFeature('productState', ProductReducer),

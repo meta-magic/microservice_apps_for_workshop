@@ -16,9 +16,6 @@ export class HttpService {
                 private _cookieService: CookieService) {
 
     }
-
-
-
     restCall(serviceUrl: string, methodType: string, requestJson?: any): Observable<any> {
        this._cService.showLoader = true;
         const headers = new HttpHeaders().append('Content-Type', 'application/json').append('tokenid', this._cookieService.get('tokenId'));
@@ -30,7 +27,6 @@ export class HttpService {
             .pipe(retry(2), catchError(this.handleError));
         }
       }
-
 
   private handleError(error: HttpErrorResponse) {
     this._cService.showLoader = false;

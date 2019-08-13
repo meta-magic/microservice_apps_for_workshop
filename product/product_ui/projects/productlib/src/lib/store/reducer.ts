@@ -52,6 +52,7 @@ export class OperationClass {
   }
 
    addProduct() {
+    debugger;
      const productLocal = Object.assign([], this.state.cartData);
      productLocal.push(this.action.data);
      return productLocal;
