@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mongo-ex-svc
+  namespace: desire3d-ext
+spec:
+  ports:
+    -
+      name: mongo-ex-svc
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

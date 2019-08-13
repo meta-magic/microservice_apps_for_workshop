@@ -1,0 +1,14 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: mongo-ex-svc
+  namespace: desire3d-ext
+subsets:
+  -
+    addresses:
+      -
+        ip: 10.142.0.40
+    ports:
+      -
+        port: 27017
+        name: mongo-ex-svc
