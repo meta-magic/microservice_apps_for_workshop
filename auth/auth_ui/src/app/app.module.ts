@@ -1,5 +1,4 @@
 
-import {CommonModule} from "@angular/common";
 
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -8,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedlibModule} from "sharedlib";
 import {RouterModule, Routes} from "@angular/router";
+import {BrowserModule} from "@angular/platform-browser";
 const routes: Routes = [
   {
     path : '', loadChildren: './modules/auth.module#AuthModule'
@@ -19,7 +19,7 @@ const routes: Routes = [
     AppComponent
   ],
   imports: [
-    CommonModule,
+    BrowserModule,
     HttpClientModule,
     FormsModule,
     AmexioWidgetModule,
