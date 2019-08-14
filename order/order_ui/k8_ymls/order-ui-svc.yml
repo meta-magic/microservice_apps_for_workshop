@@ -1,19 +1,20 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: order-svc
+  name: orderui-svc
   namespace: shoppingportal
   labels:
-    name: ordersvc
+    name: orderuisvc
+    app: orderui     
 spec:
-  type: NodePort
   selector:
-        name: order
+        name: orderui
         version: "1.0.0"
         release: stable
         tier: fe
         zone: prod
         managed-by: m2
+        app: orderui          
   ports:
   - port: 80
     targetPort: 80

@@ -9,6 +9,7 @@ spec:
     matchLabels:
       name: paymentms
       zone: prod
+      app: paymentms
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -24,6 +25,7 @@ spec:
         tier: be
         zone: prod
         managed-by: m2
+        app: paymentms
     spec:
       containers:
         - name: paymentms-ctr

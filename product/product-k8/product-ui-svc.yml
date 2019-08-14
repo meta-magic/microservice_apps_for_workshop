@@ -5,6 +5,7 @@ metadata:
   namespace: shoppingportal
   labels:
     name: productuisvc
+    app: productui
 spec:
   selector:
         name: productui
@@ -13,6 +14,7 @@ spec:
         tier: fe
         zone: prod
         managed-by: m2
+        app: productui   
   ports:
   - port: 80
     targetPort: 80

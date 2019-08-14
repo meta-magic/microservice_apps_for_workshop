@@ -7,6 +7,7 @@ spec:
   type: LoadBalancer
   selector: 
     name: authms
+    app: authms
   ports:
   - protocol: TCP
     targetPort: 8082

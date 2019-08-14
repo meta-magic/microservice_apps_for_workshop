@@ -7,6 +7,7 @@ spec:
   type: LoadBalancer
   selector: 
     name: productreviewms
+    app: productreviewms
   ports:
   - protocol: TCP
     targetPort: 8082

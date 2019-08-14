@@ -1,14 +1,15 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: orderui-deploy
+  name: productui-deploy
   namespace: shoppingportal
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      name: orderui
+      name: productui
       zone: prod
+      app: productui
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -18,16 +19,17 @@ spec:
   template:
     metadata:
       labels:
-        name: orderui
+        name: productui
         version: "1.0.0"
         release: stable
         tier: fe
         zone: prod
         managed-by: m2
+        app: productui
     spec:
       containers:
-        - name: orderui-ctr
-          image: metamagicglobal/orderui:k8 
+        - name: productui-ctr
+          image: metamagicglobal/productui:k8 
           imagePullPolicy: Always
           ports:
           - containerPort: 80                                  

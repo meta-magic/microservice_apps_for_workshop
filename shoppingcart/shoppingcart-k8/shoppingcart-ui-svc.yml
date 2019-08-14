@@ -13,6 +13,7 @@ spec:
         tier: fe
         zone: prod
         managed-by: m2
+        app: shoppingcartui
   ports:
   - port: 80
     targetPort: 80

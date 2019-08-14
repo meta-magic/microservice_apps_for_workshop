@@ -9,6 +9,7 @@ spec:
     matchLabels:
       name: orderms
       zone: prod
+      app: orderms      
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -24,6 +25,7 @@ spec:
         tier: be
         zone: prod
         managed-by: m2
+        app: orderms      
     spec:
       containers:
         - name: orderms-ctr

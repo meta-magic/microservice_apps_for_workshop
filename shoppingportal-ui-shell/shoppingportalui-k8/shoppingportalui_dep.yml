@@ -1,14 +1,15 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: product
+  name: shoppingportalui-deploy
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: product
+      name: shoppingportalui
       zone: prod
+      app: shoppingportalui
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -18,16 +19,17 @@ spec:
   template:
     metadata:
       labels:
-        name: product
+        name: shoppingportalui
         version: "1.0.0"
         release: stable
         tier: fe
         zone: prod
         managed-by: m2
+        app: shoppingportalui
     spec:
       containers:
-        - name: product-ctr
-          image: metamagicglobal/product:k8 
+        - name: shoppingportalui-ctr
+          image: metamagicglobal/shoppingportalui:k8 
           imagePullPolicy: Always
           ports:
-          - containerPort: 80                               
+          - containerPort: 80                                  

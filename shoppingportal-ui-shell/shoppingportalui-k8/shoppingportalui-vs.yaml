@@ -17,3 +17,11 @@ spec:
         host: shoppingportalui-svc.shoppingportal.svc.cluster.local
         port:
           number: 80
+  - match:
+    - uri:
+        prefix: /kiali
+    route:
+    - destination:
+        host: kiali.istio-system.svc.cluster.local
+        port:
+          number: 80          

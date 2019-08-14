@@ -9,6 +9,7 @@ spec:
     matchLabels:
       name: authms
       zone: prod
+      app: authms
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -24,6 +25,7 @@ spec:
         tier: be
         zone: prod
         managed-by: m2
+        app: authms     
     spec:
       containers:
         - name: authms-ctr

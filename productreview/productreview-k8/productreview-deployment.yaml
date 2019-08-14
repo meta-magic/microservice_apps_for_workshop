@@ -9,6 +9,7 @@ spec:
     matchLabels:
       name: productreviewms
       zone: prod
+      app: productreviewms 
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -24,6 +25,7 @@ spec:
         tier: be
         zone: prod
         managed-by: m2
+        app: productreviewms
     spec:
       containers:
         - name: productreviewms-ctr

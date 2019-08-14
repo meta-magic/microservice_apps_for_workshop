@@ -9,6 +9,7 @@ spec:
     matchLabels:
       name: shoppingcartms
       zone: prod
+      app: shoppingcartms
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -24,6 +25,7 @@ spec:
         tier: be
         zone: prod
         managed-by: m2
+        app: shoppingcartms
     spec:
       containers:
         - name: shoppingcartms-ctr
