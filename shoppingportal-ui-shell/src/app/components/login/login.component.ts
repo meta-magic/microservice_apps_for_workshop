@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginModel} from "../../models/login.model";
-import {HttpService} from "../../services/http.service";
 import {SERVICE_URL} from "../../constant/service.constant";
-import {HttpClient} from "@angular/common/http";
-import {CookieService} from 'ngx-cookie-service';
-import {CommonService} from "../../services/common.service";
+import {SharedService} from "sharedlib";
 
 
 @Component({
@@ -19,9 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _route: Router,
-    private _cService: CommonService,
-    private _cookieService: CookieService,
-    private _httpService: HttpService) {
+    private _sharedService: SharedService) {
     this.loginModel = new LoginModel();
   }
 
@@ -30,11 +25,11 @@ export class LoginComponent implements OnInit {
 
   onLoginHandle() {
     try {
-      this._httpService.restCall(SERVICE_URL.AUTH, 'post', this.loginModel).toPromise()
+      this._sharedService._httpService.restCall(SERVICE_URL.AUTH, 'post', this.loginModel).toPromise()
         .then((res: any) => {
-          this._cService.showLoader = false;
+          this._sharedService._commonService.showLoader = false;
           if (res.data.valid) {
-          this._cookieService.set('tokenId', res.data.tokenId);
+          this._sharedService._cookieService.set('tokenId', res.data.tokenId);
           this._route.navigate(['home']);
         }
         });
