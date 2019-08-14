@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AddUserModel} from '../../models/adduser.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {HttpService} from '../../services/http.service';
 import {SERVICE_URL} from '../../constant/service.constant';
-import {CommonService} from '../../services/common.service';
+import {SharedService} from "sharedlib";
 @Component({
   selector: 'add-user',
   templateUrl: './adduser.component.html',
@@ -14,8 +13,7 @@ export class AddUserComponent implements OnInit {
 addUserForm: any;
 addUserModel: AddUserModel;
   constructor(private fb: FormBuilder,
-              private _cService: CommonService,
-              private _httpService: HttpService,
+              private _sharedService: SharedService,
               private _route: Router) {
     this.addUserModel = new AddUserModel();
    }
@@ -39,9 +37,9 @@ addUserModel: AddUserModel;
 
   addUser() {
     try {
-      this._httpService.restCall(SERVICE_URL.ADD_USER, 'post', this.addUserModel).toPromise()
+      this._sharedService._httpService.restCall(SERVICE_URL.ADD_USER, 'post', this.addUserModel).toPromise()
         .then((res: any) => {
-          this._cService.showLoader = false;
+          this._sharedService._commonService.showLoader = false;
             this._route.navigate(['login']);
         });
     } catch (error) {

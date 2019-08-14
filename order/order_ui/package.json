@@ -25,6 +25,7 @@
     "font-awesome": "^4.7.0",
     "ngx-cookie-service": "^2.2.0",
     "rxjs": "~6.3.3",
+    "sharedlib": "file:../../shoppingportal-ui-shared/sharedlib-0.0.1.tgz",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

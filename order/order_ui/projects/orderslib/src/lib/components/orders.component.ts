@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../services/http.service";
-import {CommonService} from "../services/common.service";
 import {SERVICE_URL} from "../constant/service.constant";
+import {SharedService} from "sharedlib";
 
 @Component({
   selector: 'orders',
@@ -10,22 +9,20 @@ import {SERVICE_URL} from "../constant/service.constant";
 export class OrdersComponent implements OnInit {
 
   ordersList: any[] = [];
+  hasRecordFound = true;
 
-  constructor(
-      private _httpService: HttpService,
-      public _cService: CommonService) { }
+  constructor(private _sharedService: SharedService) { }
 
   ngOnInit() {
-      debugger;
     this.getOrdersDetails();
   }
 
   getOrdersDetails() {
-    this._httpService.restCall(SERVICE_URL.GET_ALL_ORDERS, 'get').toPromise()
+    this._sharedService._httpService.restCall(SERVICE_URL.GET_ALL_ORDERS, 'get').toPromise()
         .then((res: any) => {
-        debugger;
-          this._cService.showLoader = false;
+          this._sharedService._commonService.showLoader = false;
           this.ordersList = res.data;
+          this.hasRecordFound = this.ordersList.length > 0 ? true : false;
         });
   }
 
