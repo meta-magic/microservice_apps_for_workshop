@@ -22,7 +22,7 @@
                         <div class="buttoncss">
                             <amexio-button [size]="'small'" [type]="'theme-color'"  (onClick)="onAddReviewHandle()" label="Add Review"></amexio-button>
                         </div>
-                     </amexio-row>
+                     </amexio-row><br>
                               <div *ngFor="let item of productDetails.reviews">
                                <amexio-label><b>User</b>: {{item.user}}</amexio-label><br>
                                <amexio-label><b>Review Description</b>: {{item.reviewdescription}}</amexio-label><br>
