@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shoppingcartui-svc
+  namespace: shoppingportal
+  labels:
+    name: shoppingcartuisvc
+spec:
+  selector:
+        name: shoppingcartui
+        version: "1.0.0"
+        release: stable
+        tier: fe
+        zone: prod
+        managed-by: m2
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: my-http-port
