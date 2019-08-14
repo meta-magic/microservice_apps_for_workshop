@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
+import {SharedService} from "sharedlib";
 
 
 @Component({
@@ -10,7 +11,9 @@ import {Store} from "@ngrx/store";
 })
 export class HomeComponent implements OnInit {
   cartCount = 0;
-  constructor(private _router: Router, private store: Store<any>) {
+  constructor(private _router: Router,
+              private _sharedService: SharedService,
+              private store: Store<any>) {
   }
 
   ngOnInit() {
@@ -22,6 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   logOutHandle(event: any) {
+    this._sharedService._commonService.setInfoMsgCollection('Logout Successfully.');
     this._router.navigate(['login']);
   }
 
