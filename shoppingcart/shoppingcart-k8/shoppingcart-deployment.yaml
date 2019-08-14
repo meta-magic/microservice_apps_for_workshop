@@ -47,8 +47,3 @@ spec:
               secretKeyRef: 
                 name: shoppingcartsecret
                 key: product_app_base_url                
-          - name: SHOPPINGCART_APP_BASE_URL
-            valueFrom:
-              secretKeyRef: 
-                name: shoppingcartsecret
-                key: shoppingcart_app_base_url                                
