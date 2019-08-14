@@ -3,7 +3,7 @@
  */
 
 
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 import {OrderslibModule} from "orderslib";
 
 @NgModule({
