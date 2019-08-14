@@ -5,16 +5,20 @@ import {Component, OnInit} from '@angular/core';
 import {SERVICE_URL} from "../../constant/service.constant";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {SharedService} from "sharedlib";
-
+import {AddReview} from "../../models/review.model"
 @Component({
   selector: 'product-detils', templateUrl: 'product-details.component.html'
 })
 
 export class ProductDetailsComponent implements OnInit {
   productDetails: any;
+  showReviewWindow = false;
+  addReviewModel:AddReview;
+  public max: number = 5;
   constructor( private _router: Router,
                private _sharedService: SharedService,
                private _route: ActivatedRoute) {
+                this.addReviewModel = new AddReview();
   }
 
   ngOnInit() {
@@ -35,5 +39,12 @@ export class ProductDetailsComponent implements OnInit {
 
   backClickHandle() {
     this._router.navigate(['../'], {relativeTo: this._route});
+  }
+
+  onAddReviewHandle() {
+    this.showReviewWindow = true;
+  }
+  addHandle() {
+
   }
 }

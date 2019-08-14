@@ -3,7 +3,7 @@
     <amexio-column [size]="'2'"></amexio-column>
 <amexio-column [size]="'8'">
         <amexio-card-ce [align]="'center'">
-                <amexio-header-ce align="left" [background]="'theme-color'">
+                <amexio-header-ce align="left" amexioColorPalette [color-palette]="'amexio-theme-color1'">
                       <amexio-image style="cursor: pointer;"  (onClick)="backClickHandle()" [icon-class]="'fa fa-arrow-left'" [tooltip]="'Back'"></amexio-image>
                      <amexio-label size="medium-bold"> Product Details</amexio-label>
                 </amexio-header-ce>
@@ -17,12 +17,17 @@
                               <amexio-label><b>Description</b>: {{productDetails.description}}</amexio-label><br>
                               <amexio-label><b>Price</b>: {{productDetails.price}}</amexio-label><br>
                             <hr>
-                     
-                              <amexio-label size="medium-bold">Reviews</amexio-label><br><br>
+                     <amexio-row>
+                        <amexio-label size="medium-bold">Reviews</amexio-label>
+                        <div class="buttoncss">
+                            <amexio-button [size]="'small'" [type]="'theme-color'"  (onClick)="onAddReviewHandle()" label="Add Review"></amexio-button>
+                        </div>
+                     </amexio-row>
                               <div *ngFor="let item of productDetails.reviews">
                                <amexio-label><b>User</b>: {{item.user}}</amexio-label><br>
                                <amexio-label><b>Review Description</b>: {{item.reviewdescription}}</amexio-label><br>
                                <amexio-label><b>Review Date</b>: {{item.reviewdate | date:'fullDate'}}</amexio-label><br>
+                               <amexio-label><b>Rating</b>: {{item.rating}}</amexio-label><br>
                               </div>               
                       </amexio-column>
                   </amexio-row>
@@ -32,4 +37,53 @@
     <amexio-column [size]="'2'"></amexio-column>
 </amexio-row>
 </ng-container>
+
+
+<amexio-window  [(show)]="showReviewWindow"  [material-design]="true"
+  [footer]="true" [width]="'400px'">
+  <amexio-header>
+    Add Review
+  </amexio-header>
+  <amexio-body>
+    <amexio-row>
+      <amexio-column  [size]="'12'">
+          <amexio-text-input 
+          [field-label]="'Name'" 
+           name="name" 
+          [place-holder]="'Enter User Name'" 
+          [allow-blank]="false"   
+          [(ngModel)]="addReviewModel.user">
+      </amexio-text-input>  
+      </amexio-column>    
+    </amexio-row>
+
+    <amexio-row>
+        <amexio-column  [size]="'12'">
+            <amexio-textarea-input 
+            [(ngModel)]="addReviewModel.reviewdescription"
+            [field-label]="'Review Description'"
+             name ="reviewDescription"
+            [place-holder]="'Enter Review Description'"
+            [allow-blank]="false"
+            [rows]="'3'"
+            [columns]="'12'">
+          </amexio-textarea-input>
+        </amexio-column>
+    </amexio-row>
+    <amexio-row>
+      <amexio-column [size]="'12'">
+          <amexio-rating-input 
+          [(ngModel)]="addReviewModel.rating"
+          [field-label]="'Rating'"
+          [max]="max"
+           name="rating"
+        [read-only]="false">
+      </amexio-rating-input>
+      </amexio-column> 
+    </amexio-row>
+  </amexio-body>
+  <amexio-action>
+    <amexio-button [type]="'theme-color'"  (onClick)="addHandle()" label="Add"></amexio-button>
+  </amexio-action>
+</amexio-window>
 
