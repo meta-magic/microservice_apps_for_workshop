@@ -1,10 +1,8 @@
 <ng-container *ngIf="productDetails">
 <amexio-row>
-<amexio-column size="2">
-
-</amexio-column>
-<amexio-column size="8">
-        <amexio-card-ce [align]="'center'" width="700px" height="400px">
+    <amexio-column [size]="'2'"></amexio-column>
+<amexio-column [size]="'8'">
+        <amexio-card-ce [align]="'center'">
                 <amexio-header-ce align="left" [background]="'theme-color'">
                       <amexio-image style="cursor: pointer;"  (onClick)="backClickHandle()" [icon-class]="'fa fa-arrow-left'" [tooltip]="'Back'"></amexio-image>
                      <amexio-label size="medium-bold"> Product Details</amexio-label>
@@ -31,15 +29,7 @@
                 </amexio-body-ce>
               </amexio-card-ce>
     </amexio-column>
-    <amexio-column size="2">
-
-    </amexio-column>
+    <amexio-column [size]="'2'"></amexio-column>
 </amexio-row>
 </ng-container>
-<!-- <br><br>
-<amexio-button [label]="'back'"
-               [type]="'primary'"
-               [icon]="'fa fa-arrow-left'"
-               (onClick)="backClickHandle()"
-               [tooltip]="'back'">
-</amexio-button> -->
+

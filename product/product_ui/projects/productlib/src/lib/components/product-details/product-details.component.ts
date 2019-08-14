@@ -2,10 +2,9 @@
  * Created by dattaram on 13/8/19.
  */
 import {Component, OnInit} from '@angular/core';
-import {HttpService} from "../../services/http.service";
-import {CommonService} from "../../services/common.service";
 import {SERVICE_URL} from "../../constant/service.constant";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {SharedService} from "sharedlib";
 
 @Component({
   selector: 'product-detils', templateUrl: 'product-details.component.html'
@@ -14,9 +13,8 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 export class ProductDetailsComponent implements OnInit {
   productDetails: any;
   constructor( private _router: Router,
-               private _route: ActivatedRoute,
-               private _httpService: HttpService,
-               public _cService: CommonService) {
+               private _sharedService: SharedService,
+               private _route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -28,9 +26,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetails(id: string) {
-    this._httpService.restCall(SERVICE_URL.GET_ALL_PRODUCT + id, 'get').toPromise()
+    this._sharedService._httpService.restCall(SERVICE_URL.GET_ALL_PRODUCT + id, 'get').toPromise()
       .then((res: any) => {
-        this._cService.showLoader = false;
+        this._sharedService._commonService.showLoader = false;
         this.productDetails = res.data;
       });
   }

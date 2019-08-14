@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from "../../models/product.model";
-import {CommonService} from "../../services/common.service";
-import {HttpService} from "../../services/http.service";
 import {SERVICE_URL} from "../../constant/service.constant";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Store} from "@ngrx/store";
-import {ProductNamespace} from "../../store/state";
+import {SharedService} from "sharedlib";
 
 @Component({
   selector: 'app-add-product',
@@ -13,11 +10,9 @@ import {ProductNamespace} from "../../store/state";
 })
 export class AddProductComponent implements OnInit {
   product: Product;
-  constructor(public _cService: CommonService,
+  constructor(private _sharedService: SharedService,
               private _router: Router,
-              private _route: ActivatedRoute,
-              private _store: Store<ProductNamespace.IProduct>,
-              private _httpService: HttpService) {
+              private _route: ActivatedRoute) {
     this.product = new Product();
   }
 
@@ -25,15 +20,11 @@ export class AddProductComponent implements OnInit {
   }
 
   addProductHandle() {
-    // this._store.dispatch(new AddProduct(this.product));
-   // this._router.navigate(['../catlog'], {relativeTo: this._route});
-
     try {
-      this._httpService.restCall(SERVICE_URL.ADD_PRODUCT, 'post', this.product).toPromise()
+      this._sharedService._httpService.restCall(SERVICE_URL.ADD_PRODUCT, 'post', this.product).toPromise()
         .then((res: any) => {
-          this._cService.showLoader = false;
-          this._cService.infoMsgCollection = [];
-          this._cService.infoMsgCollection.push(res.message);
+          this._sharedService._commonService.showLoader = false;
+          this._sharedService._commonService.setInfoMsgCollection(res.message);
           this.product = new Product();
           this._router.navigate(['../catlog'], {relativeTo: this._route});
 
