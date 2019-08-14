@@ -7,10 +7,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {select, Store} from '@ngrx/store';
 import {CartNamespace} from "../../store/state";
 import {CartResponse} from "../../models/cart.model";
-import {HttpService} from "../../services/http.service";
 import {SERVICE_URL} from "../../constant/service.constant";
-import {CommonService} from "../../services/common.service";
-
+import {SharedService} from "sharedlib";
 
 @Component({
   selector: 'payment',
@@ -21,8 +19,7 @@ export class PaymentComponent implements OnInit {
   paymentInfo: AmexioCreditCardModel;
   cartInfo: CartResponse;
   constructor(private _router: Router,
-              private _httpService: HttpService,
-              public _cService: CommonService,
+              private _sharedService: SharedService,
               private _store: Store<CartNamespace.ICart>,
               private route: ActivatedRoute) {
     this.paymentInfo = new AmexioCreditCardModel();
@@ -30,7 +27,6 @@ export class PaymentComponent implements OnInit {
 
 
     this._store.pipe(select(CartNamespace.getState)).subscribe((cartState: any) => {
-      debugger;
       if (cartState) {
         this.cartInfo = <CartResponse>cartState.cartData;
       }
@@ -43,18 +39,13 @@ export class PaymentComponent implements OnInit {
   }
 
   payHandle() {
-debugger
     try {
-
       const requestBody = {
         "shoppintCart": this.createRequestBody()
       };
-
-
-      this._httpService.restCall(SERVICE_URL.PAYMENT, 'post', requestBody).toPromise()
+      this._sharedService._httpService.restCall(SERVICE_URL.PAYMENT, 'post', requestBody).toPromise()
           .then((res: any) => {
-        debugger;
-            this._cService.showLoader = false;
+            this._sharedService._commonService.showLoader = false;
             this._router.navigate(['../../order'], {relativeTo: this.route});
           });
     } catch (error) {

@@ -5,9 +5,10 @@ import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {PaymentComponent} from './components/payment/payment.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {StoreModule} from "@ngrx/store";
 import {CartReducer} from "./store/reducer";
+import {SharedlibModule} from "sharedlib";
 
 
 export const route = [{
@@ -21,7 +22,10 @@ export const route = [{
 @NgModule({
   declarations: [CartComponent, PaymentComponent],
   imports: [
-    CommonModule, HttpClientModule, FormsModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedlibModule.forRoot(),
     StoreModule.forFeature('cartState', CartReducer),
     AmexioWidgetModule, RouterModule.forChild(route)
   ],
