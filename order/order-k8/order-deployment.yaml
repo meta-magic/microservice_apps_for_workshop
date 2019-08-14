@@ -42,3 +42,8 @@ spec:
               secretKeyRef: 
                 name: mongosecret
                 key: mongoport
+          - name: PRODUCT_APP_BASE_URL
+            valueFrom:
+              secretKeyRef: 
+                name: shoppingcartsecret
+                key: product_app_base_url                                
