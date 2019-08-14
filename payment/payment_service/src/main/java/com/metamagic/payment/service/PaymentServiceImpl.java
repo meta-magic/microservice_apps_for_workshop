@@ -51,6 +51,7 @@ public class PaymentServiceImpl implements PaymentService {
 		repo.save(payment).subscribe();
 		
 		this.createOrder(payment).subscribe();
+		this.emptyShoppingCart(payment.getUserId()).subscribe();
 	}
 	
 	private Mono<ResponseBean>  createOrder(Payment payment){
@@ -74,5 +75,26 @@ public class PaymentServiceImpl implements PaymentService {
 
 	
 	}
+	
+	private Mono<ResponseBean>  emptyShoppingCart(String id){
+		
+		String SHOPPINGCART_APP_BASE_URL = System.getenv("SHOPPINGCART_APP_BASE_URL"); // "http://localhost:8080";
+		if (SHOPPINGCART_APP_BASE_URL == null) {
+			LOGGER.error("Unable to get SHOPPINGCART_APP_BASE_URL from system env");
+			return Mono.just(new ResponseBean());
+		}
+		String SHOPPINGCART_DELETE_URL = SHOPPINGCART_APP_BASE_URL + "/api/shoppingcart/user/"+id;
+		
+		return WebClient.builder().baseUrl(SHOPPINGCART_DELETE_URL)
+				.defaultHeader(HttpHeaders.CONTENT_TYPE, MIME_TYPE)
+				.defaultHeader(HttpHeaders.USER_AGENT, USER_AGENT)
+				.defaultHeader("tokenid", id)
+				.build().delete().retrieve()
+				.bodyToMono(ResponseBean.class);
+
+	
+	}
+	
+	
 
 }

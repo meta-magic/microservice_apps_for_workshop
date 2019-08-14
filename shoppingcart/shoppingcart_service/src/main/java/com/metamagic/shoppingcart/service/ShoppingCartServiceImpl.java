@@ -1,6 +1,7 @@
 package com.metamagic.shoppingcart.service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.LoggerFactory;
@@ -32,20 +33,29 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 	@Override
 	public Flux<ShoppingCart> findByUserId(String userId) {
-		return repo.findByUserId(userId);
+		return repo.findByUserIdAndActive(userId, true);
 	}
 	
 	@Override
+	public void deleteByUserId(String userId) {
+		List<ShoppingCart> shoppingCart = repo.findByUserIdAndActive(userId, true).collectList().block();
+		for (ShoppingCart shoppingCart2 : shoppingCart) {
+			shoppingCart2.setActive(false);
+		}
+		
+		repo.saveAll(shoppingCart).subscribe();
+		
+	}
+	@Override
 	public Mono<ShoppingCartDTO> fetchByUserId(String userId) {
 		return 
-			repo.findByUserId(userId)
+			repo.findByUserIdAndActive(userId, true)
 			.collectList()
 			.map(cart ->{
 				ShoppingCartDTO dto = new ShoppingCartDTO(cart, new Double(0));
 				dto.calculateTotal();
 				
 				dto.getShoppingCart().forEach((details) ->{
-
 
 					try {
 						Mono<ResponseBean> resp = this.fetchProductDetails(details.getProductId());
