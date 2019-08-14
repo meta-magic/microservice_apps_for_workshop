@@ -9,7 +9,7 @@
       <amexio-body-ce [align]="'start'">
         <amexio-row>
           <amexio-column [size]="12" [fit]="true">
-            <amexio-image [path]="data.image" [height]="'200px'">
+            <amexio-image [path]="(data.image ? data.image : 'assets/images/blank.jpg')" [height]="'200px'">
             </amexio-image>
           </amexio-column>
           <amexio-column [size]="12">
