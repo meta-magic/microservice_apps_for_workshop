@@ -51,4 +51,4 @@ spec:
             valueFrom:
               secretKeyRef: 
                 name: ordersecret
-                key: shoppingcart_app_base_url                                                
+                key: shoppingcart_app_base_url
