@@ -1,5 +1,7 @@
 package com.metamagic.order.entities;
 
+import java.util.Date;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.annotation.Id;
@@ -42,6 +44,10 @@ public class Order extends BaseEntity {
 	private java.util.List<ShoppingCart> shoppintCart;
 
 	private Double sum;
+	
+	@Field(name = "orderDate")
+	private Date orderDate = new Date();
+
 	
 	public void calculateCartTotal(){
 		this.sum = new Double(0);
