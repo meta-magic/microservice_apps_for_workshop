@@ -12,6 +12,8 @@ public interface ShoppingCartService {
 	
 	public Flux<ShoppingCart> findByUserId(String userId) ;
 	
+	public void deleteByUserId(String userId) ;
+	
 	public Mono<ShoppingCartDTO> fetchByUserId(String userId) ;
 	
 }

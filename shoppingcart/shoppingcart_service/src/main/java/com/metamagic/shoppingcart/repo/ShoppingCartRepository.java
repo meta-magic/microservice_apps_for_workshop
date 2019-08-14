@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface ShoppingCartRepository extends ReactiveMongoRepository<ShoppingCart, String> {
 
-	public Flux<ShoppingCart> findByUserId(String userId);
+	public Flux<ShoppingCart> findByUserIdAndActive(String userId, boolean active);
 	
 	public Mono<ShoppingCart> findById(String id);
 }
