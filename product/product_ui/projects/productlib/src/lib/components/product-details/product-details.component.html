@@ -1,10 +1,45 @@
-{{productDetails | json }}
+<ng-container *ngIf="productDetails">
+<amexio-row>
+<amexio-column size="2">
 
+</amexio-column>
+<amexio-column size="8">
+        <amexio-card-ce [align]="'center'" width="700px" height="400px">
+                <amexio-header-ce align="left" [background]="'theme-color'">
+                      <amexio-image style="cursor: pointer;"  (onClick)="backClickHandle()" [icon-class]="'fa fa-arrow-left'" [tooltip]="'Back'"></amexio-image>
+                     <amexio-label size="medium-bold"> Product Details</amexio-label>
+                </amexio-header-ce>
+                <amexio-body-ce [align]="'start'">
+                  <amexio-row>
+                      <amexio-column size="4">         
+                      </amexio-column>
+                      <amexio-column size ="8">
+                      
+                              <amexio-label><b>Name</b>: {{productDetails.name}}</amexio-label><br>
+                              <amexio-label><b>Description</b>: {{productDetails.description}}</amexio-label><br>
+                              <amexio-label><b>Price</b>: {{productDetails.price}}</amexio-label><br>
+                            <hr>
+                     
+                              <amexio-label size="medium-bold">Reviews</amexio-label><br><br>
+                              <div *ngFor="let item of productDetails.reviews">
+                               <amexio-label><b>User</b>: {{item.user}}</amexio-label><br>
+                               <amexio-label><b>Review Description</b>: {{item.reviewdescription}}</amexio-label><br>
+                               <amexio-label><b>Review Date</b>: {{item.reviewdate | date:'fullDate'}}</amexio-label><br>
+                              </div>               
+                      </amexio-column>
+                  </amexio-row>
+                </amexio-body-ce>
+              </amexio-card-ce>
+    </amexio-column>
+    <amexio-column size="2">
 
-<br><br>
+    </amexio-column>
+</amexio-row>
+</ng-container>
+<!-- <br><br>
 <amexio-button [label]="'back'"
                [type]="'primary'"
                [icon]="'fa fa-arrow-left'"
                (onClick)="backClickHandle()"
                [tooltip]="'back'">
-</amexio-button>
+</amexio-button> -->
