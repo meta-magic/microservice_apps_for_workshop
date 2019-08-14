@@ -27,7 +27,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/amexio-ng-extensions/styles/css/at-md-blue.css"
             ],
             "scripts": []
           },
@@ -83,7 +85,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/amexio-ng-extensions/styles/css/at-md-blue.css"
             ],
             "scripts": [],
             "assets": [
