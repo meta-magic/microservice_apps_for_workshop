@@ -28,6 +28,9 @@ const routes: Routes = [
       },
       {
         path : 'cart', loadChildren: './modules/cart.module#CartModule'
+      },
+      {
+        path : 'payment', loadChildren: './modules/payment.module#PaymentModule'
       }
     ]
   },

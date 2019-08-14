@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
   }
 
   payClickHandle(event: any) {
-    this._router.navigate(['../payment'], {relativeTo: this.route});
+    this._router.navigate(['../../payment'], {relativeTo: this.route});
 
   }
 

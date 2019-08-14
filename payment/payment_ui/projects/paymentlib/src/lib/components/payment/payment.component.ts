@@ -4,9 +4,6 @@
 import {Component, OnInit} from '@angular/core';
 import { AmexioCreditCardModel } from 'amexio-ng-extensions';
 import {ActivatedRoute, Router} from "@angular/router";
-import {select, Store} from '@ngrx/store';
-import {CartNamespace} from "../../store/state";
-import {CartResponse} from "../../models/cart.model";
 import {SERVICE_URL} from "../../constant/service.constant";
 import {SharedService} from "sharedlib";
 
@@ -17,25 +14,24 @@ import {SharedService} from "sharedlib";
 
 export class PaymentComponent implements OnInit {
   paymentInfo: AmexioCreditCardModel;
-  cartInfo: CartResponse;
+  cartInfo: any;
   constructor(private _router: Router,
               private _sharedService: SharedService,
-              private _store: Store<CartNamespace.ICart>,
               private route: ActivatedRoute) {
     this.paymentInfo = new AmexioCreditCardModel();
-    this.cartInfo = new CartResponse();
-
-
-    this._store.pipe(select(CartNamespace.getState)).subscribe((cartState: any) => {
-      if (cartState) {
-        this.cartInfo = <CartResponse>cartState.cartData;
-      }
-
-    });
   }
 
 
   ngOnInit() {
+    this.getCartData();
+  }
+
+  getCartData() {
+    this._sharedService._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
+      .then((res: any) => {
+        this._sharedService._commonService.showLoader = false;
+        this.cartInfo = res.data;
+      });
   }
 
   payHandle() {
@@ -46,6 +42,7 @@ export class PaymentComponent implements OnInit {
       this._sharedService._httpService.restCall(SERVICE_URL.PAYMENT, 'post', requestBody).toPromise()
           .then((res: any) => {
             this._sharedService._commonService.showLoader = false;
+            this._sharedService._commonService.setInfoMsgCollection(res.message);
             this._router.navigate(['../../order'], {relativeTo: this.route});
           });
     } catch (error) {
