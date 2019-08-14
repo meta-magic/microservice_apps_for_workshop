@@ -17,3 +17,11 @@ spec:
         host: order-svc.shoppingportal.svc.cluster.local
         port:
           number: 80
+  - match:
+    - uri:
+        prefix: /orderui
+    route:
+    - destination:
+        host: orderui-svc.shoppingportal.svc.cluster.local
+        port:
+          number: 80          

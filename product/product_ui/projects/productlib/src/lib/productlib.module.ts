@@ -9,6 +9,7 @@ import {StoreModule} from "@ngrx/store";
 import {ProductReducer} from "./store/reducer";
 import { ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {FormsModule} from "@angular/forms";
+import {SharedlibModule} from "sharedlib";
 
 
 
@@ -35,7 +36,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [CatlogComponent, AddProductComponent, ProductDetailsComponent],
   imports: [
-    CommonModule, HttpClientModule, FormsModule,
+    CommonModule, HttpClientModule, FormsModule,SharedlibModule.forRoot(),
     StoreModule.forFeature('productState', ProductReducer),
     RouterModule.forChild(routes), AmexioWidgetModule
   ],

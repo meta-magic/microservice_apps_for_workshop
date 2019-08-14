@@ -1,31 +1,37 @@
-<h2 *ngIf="ordersList.length === 0"> No Record Found.</h2>
-<amexio-datagrid title="Previous Orders"
-                 [data]="ordersList"
-                 [page-size]="10">
-  <amexio-data-table-column
-    [data-index]="'orderNo'"
-    [data-type]="'string'"
-    [text]="'Order Ref ID'">
-  </amexio-data-table-column>
-  <amexio-data-table-column
-    [sort]="false"
-    [data-index]="'orderDate'"
-    [data-type]="'string'"
-    [text]="'Order Date'">
-  </amexio-data-table-column>
-  <amexio-data-table-column
-    [data-index]="'sum'"
-    [data-type]="'string'"
-    [text]="'Total'">
-  </amexio-data-table-column>
-  <amexio-data-table-column
-    [data-index]="'status'"
-    [data-type]="'string'"
-    [text]="'Status'">
-    <ng-template #amexioBodyTmpl let-column let-row="row">
-      <amexio-label class="fa fa-circle fa-lg" [ngClass]="{'green': row.paid === true , 'red' : row.paid === false}"></amexio-label>
-      &nbsp;{{row.status}}
-    </ng-template>
-  </amexio-data-table-column>
-</amexio-datagrid>
 
+<h2 *ngIf="!hasRecordFound"> No Record Found.</h2>
+<ng-container *ngIf="ordersList.length > 0">
+  <amexio-datagrid title="Previous Orders"
+                   [data]="ordersList"
+                   [page-size]="10">
+    <amexio-data-table-column
+            [data-index]="'orderNo'"
+            [data-type]="'string'"
+            [text]="'Order Ref ID'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+            [sort]="false"
+            [data-index]="'orderDate'"
+            [data-type]="'string'"
+            [text]="'Order Date'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+            [data-index]="'sum'"
+            [data-type]="'string'"
+            [text]="'Total'">
+    </amexio-data-table-column>
+    <amexio-data-table-column
+            [data-index]="'status'"
+            [data-type]="'string'"
+            [text]="'Status'">
+      <ng-template #amexioBodyTmpl let-column let-row="row">
+        <amexio-label class="fa fa-circle fa-lg" [ngClass]="{'green': row.paid === true , 'red' : row.paid === false}"></amexio-label>
+        &nbsp;{{row.status}}
+      </ng-template>
+    </amexio-data-table-column>
+  </amexio-datagrid>
+</ng-container>
+
+
+
+<notification-loader></notification-loader>

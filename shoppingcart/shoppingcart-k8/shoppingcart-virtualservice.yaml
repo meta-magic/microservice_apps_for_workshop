@@ -17,3 +17,11 @@ spec:
         host: shoppingcart-svc.shoppingportal.svc.cluster.local
         port:
           number: 80
+  - match:
+    - uri:
+        prefix: /shoppingcartui
+    route:
+    - destination:
+        host: shoppingcartui-svc.shoppingportal.svc.cluster.local
+        port:
+          number: 80          

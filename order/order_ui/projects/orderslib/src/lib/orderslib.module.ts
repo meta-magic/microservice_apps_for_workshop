@@ -2,8 +2,8 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import { OrdersComponent } from './components/orders.component';
 import {RouterModule, Routes} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
 import { AmexioWidgetModule } from 'amexio-ng-extensions';
+import {SharedlibModule} from "sharedlib";
 
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [OrdersComponent],
   imports: [
-    CommonModule, HttpClientModule,
+    CommonModule,SharedlibModule.forRoot(),
     RouterModule.forChild(routes), AmexioWidgetModule
   ],
 })

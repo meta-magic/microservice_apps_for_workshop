@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: shoppingcartui-deploy
+  namespace: shoppingportal
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: shoppingcartui
+      zone: prod
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        name: shoppingcartui
+        version: "1.0.0"
+        release: stable
+        tier: fe
+        zone: prod
+        managed-by: m2
+    spec:
+      containers:
+        - name: shoppingcartui-ctr
+          image: metamagicglobal/shoppingcartui:k8 
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80                                  

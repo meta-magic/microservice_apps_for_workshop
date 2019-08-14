@@ -20,12 +20,13 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
-    "amexio-ng-extensions": "^5.17.1",
-    "ngx-cookie-service": "^2.2.0",
-    "core-js": "^2.5.4",
-    "rxjs": "~6.3.3",
     "@ngrx/store": "7.3.0",
+    "amexio-ng-extensions": "^5.17.1",
+    "core-js": "^2.5.4",
+    "ngx-cookie-service": "^2.2.0",
     "redux": "4.0.1",
+    "rxjs": "~6.3.3",
+    "sharedlib": "file:../../shoppingportal-ui-shared/sharedlib-0.0.1.tgz",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

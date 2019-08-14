@@ -6,10 +6,16 @@ import {HttpService} from "./services/http.service";
 import {AmexioWidgetModule} from "amexio-ng-extensions";
 import {SharedService} from "./services/shared.service";
 import {CookieService} from "ngx-cookie-service";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [NotificationLoaderComponent],
-  imports: [CommonModule, AmexioWidgetModule],
+  imports: [CommonModule,
+            HttpClientModule,
+            FormsModule,
+            ReactiveFormsModule,
+            AmexioWidgetModule],
   exports: [NotificationLoaderComponent],
   providers: [SharedService,CommonService, HttpService, CookieService]
 })

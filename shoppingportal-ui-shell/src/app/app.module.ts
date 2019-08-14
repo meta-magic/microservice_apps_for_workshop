@@ -28,7 +28,6 @@ import {SharedlibModule} from "sharedlib";
     AmexioWidgetModule,
     ReactiveFormsModule,
     SharedlibModule.forRoot()
-
   ],
   bootstrap: [AppComponent]
 })

@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {CartResponse} from '../../models/cart.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SERVICE_URL} from "../../constant/service.constant";
-import {HttpService} from "../../services/http.service";
-import {CommonService} from "../../services/common.service";
 import {select, Store} from '@ngrx/store';
 import {CartNamespace} from "../../store/state";
 import {AddToCart} from "../../store/action";
+import {SharedService} from "sharedlib";
 
 
 @Component({
@@ -15,15 +14,12 @@ import {AddToCart} from "../../store/action";
 })
 export class CartComponent implements OnInit {
   cartInfo: CartResponse;
-  constructor(  private _httpService: HttpService,
-                public _cService: CommonService,
+  constructor(  private _sharedService: SharedService,
                 private _router: Router,
                 private _store: Store<CartNamespace.ICart>,
                 private route: ActivatedRoute) {
     this.cartInfo = new CartResponse();
-
       this._store.pipe(select(CartNamespace.getState)).subscribe((cartState: any) => {
-          debugger;
           if (cartState) {
               this.cartInfo = <CartResponse>cartState.cartData;
           }
@@ -36,9 +32,9 @@ export class CartComponent implements OnInit {
   }
 
   getCartData() {
-    this._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
+    this._sharedService._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
         .then((res: any) => {
-          this._cService.showLoader = false;
+          this._sharedService._commonService.showLoader = false;
             this._store.dispatch(new AddToCart(res.data));
         });
   }
