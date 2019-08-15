@@ -9,7 +9,9 @@
                 </amexio-header-ce>
                 <amexio-body-ce [align]="'start'">
                   <amexio-row>
-                      <amexio-column size="4">         
+                      <amexio-column size="4" [fit]="true">
+                          <amexio-image [path]="(productDetails.primaryicon ? productDetails.primaryicon : 'assets/images/blank.jpg')" [height]="'200px'">
+                          </amexio-image>
                       </amexio-column>
                       <amexio-column size ="8">
                       
@@ -27,7 +29,7 @@
                                <amexio-label><b>User</b>: {{item.user}}</amexio-label><br>
                                <amexio-label><b>Review Description</b>: {{item.reviewdescription}}</amexio-label><br>
                                <amexio-label><b>Review Date</b>: {{item.reviewdate | date:'fullDate'}}</amexio-label><br>
-                               <amexio-label><b>Rating</b>: {{item.rating}}</amexio-label><br>
+                               <amexio-label><b>Rating</b>: {{item.rating}}</amexio-label><br><br><hr><br>
                               </div>               
                       </amexio-column>
                   </amexio-row>
@@ -87,3 +89,4 @@
   </amexio-action>
 </amexio-window>
 
+<notification-loader></notification-loader>

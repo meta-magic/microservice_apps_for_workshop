@@ -34,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
       .then((res: any) => {
         this._sharedService._commonService.showLoader = false;
         this.productDetails = res.data;
+        this.addReviewModel.productId = this.productDetails.id;
       });
   }
 
@@ -45,6 +46,12 @@ export class ProductDetailsComponent implements OnInit {
     this.showReviewWindow = true;
   }
   addHandle() {
-
+    this._sharedService._httpService.restCall(SERVICE_URL.ADD_REVIEW, 'post', this.addReviewModel).toPromise()
+        .then((res: any) => {
+          this._sharedService._commonService.showLoader = false;
+          this._sharedService._commonService.setInfoMsgCollection(res.message);
+          this.productDetails.reviews.push(res.data);
+          this.showReviewWindow = false;
+        });
   }
 }
