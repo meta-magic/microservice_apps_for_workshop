@@ -1,0 +1,68 @@
+ <div style=" width: 100%; height: 100%;">
+  <amexio-layout-columns [orientation]="'vertical'" [border]="false" [alignment]="'center'">
+    <amexio-layout-item>
+      <amexio-layout-columns [fit]="true" [orientation]="'horizontal'" [border]="false" [alignment]="'center'">
+        <amexio-layout-item> &nbsp;</amexio-layout-item>
+        <amexio-layout-item style="min-width: 300px;">
+          <amexio-card-ce>
+            <amexio-header-ce [border-bottom]="true" [height]="'45px'">
+              <amexio-label size="small">
+                Add User
+              </amexio-label>
+            </amexio-header-ce>
+            <amexio-body-ce>
+                <form [formGroup]="addUserForm">
+                    <amexio-row>
+                        <amexio-column size="6">
+                            <amexio-text-input [place-holder]="'Enter User Id '" [(ngModel)]="addUserModel.userId" icon-feedback="true" allow-blank="false"
+                                formControlName="userId" name="userId" field-label="User Id">
+                            </amexio-text-input>
+                        </amexio-column>
+                        <amexio-column size="6">
+                                <amexio-password-input formControlName="password" [(ngModel)]="addUserModel.password" [field-label]="'Password'" name="password"
+                                  [place-holder]="'Enter Password'" [allow-blank]="false" [icon-feedback]="false">
+                                </amexio-password-input>
+                        </amexio-column>
+                       </amexio-row>
+                       <amexio-row>
+                          <amexio-column size="6">
+                              <amexio-text-input [place-holder]="'Enter FirstName '" [(ngModel)]="addUserModel.firstName" icon-feedback="true" allow-blank="false"
+                                  formControlName="firstName" name="firstName" field-label="FirstName">
+                              </amexio-text-input>
+                          </amexio-column>
+                          <amexio-column size="6">
+                              <amexio-text-input [place-holder]="'Enter LastName'" [(ngModel)]="addUserModel.lastName" icon-feedback="true" allow-blank="false"
+                              formControlName="lastName" name="lastName" field-label="LastName">
+                          </amexio-text-input>
+                          </amexio-column>
+                         </amexio-row>
+                         <amexio-row>
+                            <amexio-column size="6">
+                                <amexio-text-input [place-holder]="'Enter Email Id '" [(ngModel)]="addUserModel.emailId" icon-feedback="true" allow-blank="false"
+                                    formControlName="emailId" name="emailId" field-label="Email Id">
+                                </amexio-text-input>
+                            </amexio-column>
+                            <amexio-column size="6">
+                            <amexio-number-input  allow-blank="false" formControlName="PhoneNo" [(ngModel)]="addUserModel.phoneNo" [field-label]="'Phone Number'"
+                              [place-holder]="'Enter Phone No.'">
+                           </amexio-number-input>
+                            </amexio-column>
+                           </amexio-row>
+                </form>
+            </amexio-body-ce>
+            <amexio-action-ce>
+                <amexio-button  [label]="'Back'" [type]="'default'" [tooltip]="'Back'" [block]="true"
+                    (onClick)="onBackClick()">
+                </amexio-button>
+                  <amexio-button [disabled]="!addUserForm.valid" [label]="'Add'" [type]="'green'" [tooltip]="'Add'" [block]="true"
+                                 (onClick)="addUser()">
+                  </amexio-button>
+            </amexio-action-ce>
+          </amexio-card-ce>
+        </amexio-layout-item>
+        <amexio-layout-item> &nbsp;</amexio-layout-item>
+      </amexio-layout-columns>
+
+    </amexio-layout-item>
+  </amexio-layout-columns>
+</div>
