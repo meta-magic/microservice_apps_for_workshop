@@ -8,6 +8,8 @@ import {SharedService} from "./services/shared.service";
 import {CookieService} from "ngx-cookie-service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AuthCanLoadService} from "./services/auth.canload.service";
+import {AuthCanActiveService} from "./services/auth.canActive.service";
 
 @NgModule({
   declarations: [NotificationLoaderComponent],
@@ -17,14 +19,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
             ReactiveFormsModule,
             AmexioWidgetModule],
   exports: [NotificationLoaderComponent],
-  providers: [SharedService,CommonService, HttpService, CookieService]
+  providers: [SharedService,CommonService, HttpService, CookieService, AuthCanLoadService, AuthCanActiveService]
 })
 export class SharedlibModule {
 
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedlibModule,
-      providers: [SharedService]
+      providers: [SharedService, AuthCanLoadService, AuthCanActiveService]
     };
   }
 }

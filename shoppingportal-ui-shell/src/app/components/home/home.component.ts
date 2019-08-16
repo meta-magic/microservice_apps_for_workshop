@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
   }
 
   logOutHandle(event: any) {
+    this._sharedService._cookieService.delete('tokenId');
+    debugger;
     this._sharedService._commonService.setInfoMsgCollection('Logout Successfully.');
     this._router.navigate(['login']);
   }

@@ -6,7 +6,7 @@ export class LoginModel {
   userId: string;
   password: string;
   constructor() {
-    this.password = 'password2';
-    this.userId = 'dgtestuser1';
+    this.password = '';
+    this.userId = '';
   }
 }

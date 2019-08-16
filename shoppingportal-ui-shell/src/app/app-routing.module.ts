@@ -1,27 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
+import {SharedlibModule, AuthCanLoadService, AuthCanActiveService} from "sharedlib";
 const routes: Routes = [
   {
     path : '', loadChildren: './modules/auth.module#AuthModule'
   },
   {
-    path : 'home', component: HomeComponent,
+    path : 'home', canActivate: [AuthCanActiveService], component: HomeComponent,
     children: [
       {
         path: '', redirectTo: 'product', pathMatch: 'full'
       },
       {
-        path : 'product', loadChildren: './modules/product.module#ProductModule'
+        path : 'product', canLoad: [AuthCanLoadService], loadChildren: './modules/product.module#ProductModule'
       },
       {
-        path : 'order', loadChildren: './modules/orders.module#OrdersModule'
+        path : 'order', canLoad: [AuthCanLoadService], loadChildren: './modules/orders.module#OrdersModule'
       },
       {
-        path : 'cart', loadChildren: './modules/cart.module#CartModule'
+        path : 'cart', canLoad: [AuthCanLoadService], loadChildren: './modules/cart.module#CartModule'
       },
       {
-        path : 'payment', loadChildren: './modules/payment.module#PaymentModule'
+        path : 'payment', canLoad: [AuthCanLoadService], loadChildren: './modules/payment.module#PaymentModule'
       }
     ]
   },
@@ -29,7 +30,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash : true}) ],
+  imports: [RouterModule.forRoot(routes, {useHash : true}),
+    SharedlibModule.forRoot()],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
