@@ -13,7 +13,7 @@
                 [hidden]="false"
                 [text]="'Product'">
           <ng-template #amexioBodyTmpl let-column let-row="row">
-            <amexio-image [path]="(row.primaryicon ? 'assets/images/product/' + row.primaryicon : 'assets/images/product/blank.jpg')" [height]="'200px'">
+            <amexio-image [path]="(row.productDetails.primaryicon ? 'assets/images/product/' + row.productDetails.primaryicon : 'assets/images/product/blank.jpg')" [height]="'200px'">
             </amexio-image>
           </ng-template>
         </amexio-data-table-column>
