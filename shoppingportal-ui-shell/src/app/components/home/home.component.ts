@@ -17,23 +17,30 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select<any>('productState').subscribe((customerState: any) =>  {
+    this.store.select<any>('productState').subscribe((customerState: any) => {
       if(customerState && customerState.cartData.length > 0) {
         this.cartCount = customerState.cartData.length;
       }
       });
 
     this.store.select<any>('paymentState').subscribe((paymentState: any) =>  {
-      debugger;
       if(paymentState && paymentState.cartData) {
         this.cartCount = paymentState.cartData.length;
       }
     });
+
+    this.store.select<any>('cartState').subscribe((cartState: any) =>  {
+      if(cartState && cartState.cartData) {
+        this.cartCount = cartState.cartData.shoppingCart.length;
+      }
+    });
+
+
+
   }
 
   logOutHandle(event: any) {
     this._sharedService._cookieService.delete('tokenId');
-    debugger;
     this._sharedService._commonService.setInfoMsgCollection('Logout Successfully.');
     this._router.navigate(['login']);
   }

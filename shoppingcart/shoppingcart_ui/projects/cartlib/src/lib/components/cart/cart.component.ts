@@ -20,12 +20,14 @@ export class CartComponent implements OnInit {
                 private _store: Store<CartNamespace.ICart>,
                 private route: ActivatedRoute) {
     this.cartInfo = new CartResponse();
-   /*   this._store.pipe(select(CartNamespace.getState)).subscribe((cartState: any) => {
+      this._store.pipe(select(CartNamespace.getState)).subscribe((cartState: any) => {
           if (cartState) {
               this.cartInfo = <CartResponse>cartState.cartData;
+            this.hasRecordFound = this.cartInfo.shoppingCart.length > 0 ? true : false;
+
           }
 
-      });*/
+      });
   }
 
   ngOnInit() {
@@ -36,9 +38,7 @@ export class CartComponent implements OnInit {
     this._sharedService._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
         .then((res: any) => {
           this._sharedService._commonService.showLoader = false;
-            this.cartInfo = <CartResponse>res.data;
-            this.hasRecordFound = this.cartInfo.shoppingCart.length > 0 ? true : false;
-            //this._store.dispatch(new AddToCart(res.data));
+            this._store.dispatch(new AddToCart(res.data));
         });
   }
 
