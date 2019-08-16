@@ -1,7 +1,7 @@
 
 <h2 *ngIf="!hasRecordFound"> No Record Found.</h2>
 <ng-container *ngIf="ordersList.length > 0">
-  <amexio-datagrid title="Previous Orders"
+  <amexio-datagrid title="Order History"
                    [data]="ordersList"
                    [page-size]="10">
     <amexio-data-table-column
@@ -14,6 +14,9 @@
             [data-index]="'orderDate'"
             [data-type]="'string'"
             [text]="'Order Date'">
+      <ng-template #amexioBodyTmpl let-column let-row="row">
+         {{row.orderDate | date:'fullDate'}}
+      </ng-template>
     </amexio-data-table-column>
     <amexio-data-table-column
             [data-index]="'sum'"
@@ -26,7 +29,7 @@
             [text]="'Status'">
       <ng-template #amexioBodyTmpl let-column let-row="row">
         <amexio-label class="fa fa-circle fa-lg" [ngClass]="{'green': row.paid === true , 'red' : row.paid === false}"></amexio-label>
-        &nbsp;{{row.status}}
+        &nbsp;{{row.status | titlecase}}
       </ng-template>
     </amexio-data-table-column>
   </amexio-datagrid>

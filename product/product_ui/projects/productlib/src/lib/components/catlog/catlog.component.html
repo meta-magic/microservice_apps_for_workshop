@@ -21,11 +21,8 @@
 
       </amexio-body-ce>
       <amexio-action-ce [align]="'space-between'" [border-top]="true">
-        <amexio-button [label]="'Details'"
-                       [type]="'primary'"
-                       (onClick)="productDetailsHandle(data)"
-                       [tooltip]="'more'">
-        </amexio-button>
+        <a (click)="productDetailsHandle(data)" style="color: blue;cursor: pointer">More...</a>
+
         <amexio-button [label]="'Add To Cart'"
                        [type]="'primary'"
                        [icon]="'fa fa-shopping-cart'"
