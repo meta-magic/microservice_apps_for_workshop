@@ -32,6 +32,13 @@ export class CatlogComponent implements OnInit {
 
   ngOnInit() {
     this.getProduct();
+  /*    this.route.data
+          .subscribe((product: any) => {
+          debugger;
+          this._sharedService._commonService.showLoader = false;
+              this.store.dispatch(new UpdateProductData(product.product.data));
+          });*/
+
   }
 
   getProduct() {

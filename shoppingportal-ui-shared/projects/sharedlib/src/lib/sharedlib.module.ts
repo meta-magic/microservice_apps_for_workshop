@@ -10,6 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthCanLoadService} from "./services/auth.canload.service";
 import {AuthCanActiveService} from "./services/auth.canActive.service";
+import {CatlogResolverService} from "./services/catlog.resolver.service";
 
 @NgModule({
   declarations: [NotificationLoaderComponent],
@@ -19,14 +20,18 @@ import {AuthCanActiveService} from "./services/auth.canActive.service";
             ReactiveFormsModule,
             AmexioWidgetModule],
   exports: [NotificationLoaderComponent],
-  providers: [SharedService,CommonService, HttpService, CookieService, AuthCanLoadService, AuthCanActiveService]
+  providers: [SharedService,CommonService, HttpService,
+    CookieService, AuthCanLoadService,
+    CatlogResolverService,
+    AuthCanActiveService]
 })
 export class SharedlibModule {
 
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedlibModule,
-      providers: [SharedService, AuthCanLoadService, AuthCanActiveService]
+      providers: [SharedService, AuthCanLoadService,
+        AuthCanActiveService, CatlogResolverService]
     };
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
-import {SharedlibModule, AuthCanLoadService, AuthCanActiveService} from "sharedlib";
+import {SharedlibModule, AuthCanLoadService, CatlogResolverService, AuthCanActiveService} from "sharedlib";
 const routes: Routes = [
   {
     path : '', loadChildren: './modules/auth.module#AuthModule'
@@ -13,7 +13,12 @@ const routes: Routes = [
         path: '', redirectTo: 'product', pathMatch: 'full'
       },
       {
-        path : 'product', canLoad: [AuthCanLoadService], loadChildren: './modules/product.module#ProductModule'
+        path : 'product',
+        canLoad: [AuthCanLoadService],
+    /*    resolve: {
+          product: CatlogResolverService
+        },*/
+        loadChildren: './modules/product.module#ProductModule'
       },
       {
         path : 'order', canLoad: [AuthCanLoadService], loadChildren: './modules/orders.module#OrdersModule'
