@@ -14,7 +14,6 @@
                           </amexio-image>
                       </amexio-column>
                       <amexio-column size ="8">
-                      
                               <amexio-label><b>Name</b>: {{productDetails.name}}</amexio-label><br>
                               <amexio-label><b>Description</b>: {{productDetails.description}}</amexio-label><br>
                               <amexio-label><b>Price</b>: {{productDetails.price}}</amexio-label><br>
@@ -29,7 +28,13 @@
                                <amexio-label><b>User</b>: {{item.user}}</amexio-label><br>
                                <amexio-label><b>Review Description</b>: {{item.reviewdescription}}</amexio-label><br>
                                <amexio-label><b>Review Date</b>: {{item.reviewdate | date:'fullDate'}}</amexio-label><br>
-                               <amexio-label><b>Rating</b>: {{item.rating}}</amexio-label><br><br><hr><br>
+                              <amexio-rating-input
+                                       [(ngModel)]="item.rating"
+                                       [field-label]="''"
+                                       [max]="max"
+                                       name="rating"
+                                       [read-only]="false">
+                               </amexio-rating-input><br><br><hr><br>
                               </div>               
                       </amexio-column>
                   </amexio-row>

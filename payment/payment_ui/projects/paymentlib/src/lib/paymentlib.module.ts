@@ -5,6 +5,8 @@ import { AmexioWidgetModule } from 'amexio-ng-extensions';
 import {SharedlibModule} from "sharedlib";
 import {PaymentComponent} from './components/payment/payment.component'
 import {FormsModule} from "@angular/forms";
+import {StoreModule} from "@ngrx/store";
+import {PaymentReducer} from "./store/reducer";
 
 
 const routes: Routes = [
@@ -18,6 +20,7 @@ const routes: Routes = [
   declarations: [PaymentComponent],
   imports: [
     CommonModule,SharedlibModule.forRoot(), FormsModule,
+    StoreModule.forFeature('paymentState', PaymentReducer),
     RouterModule.forChild(routes), AmexioWidgetModule
   ],
 })

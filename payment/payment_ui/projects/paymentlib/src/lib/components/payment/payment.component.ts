@@ -6,6 +6,9 @@ import { AmexioCreditCardModel } from 'amexio-ng-extensions';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SERVICE_URL} from "../../constant/service.constant";
 import {SharedService} from "sharedlib";
+import {Store} from "@ngrx/store";
+import {AddToCart} from "../../store/action";
+import {PaymentNamespace} from "../../store/state";
 
 @Component({
   selector: 'payment',
@@ -17,6 +20,7 @@ export class PaymentComponent implements OnInit {
   cartInfo: any;
   constructor(private _router: Router,
               private _sharedService: SharedService,
+              private store: Store<PaymentNamespace.IPayment>,
               private route: ActivatedRoute) {
     this.paymentInfo = new AmexioCreditCardModel();
   }
@@ -43,6 +47,7 @@ export class PaymentComponent implements OnInit {
           .then((res: any) => {
             this._sharedService._commonService.showLoader = false;
             this._sharedService._commonService.setInfoMsgCollection(res.message);
+            this.getCart();
             this._router.navigate(['../../order'], {relativeTo: this.route});
           });
     } catch (error) {
@@ -58,5 +63,13 @@ export class PaymentComponent implements OnInit {
       delete item.isSelected;
     });
     return cartCollection;
+  }
+
+  getCart() {
+    debugger;
+    this._sharedService._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
+      .then((res: any) => {
+        this.store.dispatch(new AddToCart(res.data.shoppingCart));
+      });
   }
 }

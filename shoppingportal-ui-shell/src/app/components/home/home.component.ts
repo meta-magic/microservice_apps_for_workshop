@@ -22,6 +22,13 @@ export class HomeComponent implements OnInit {
         this.cartCount = customerState.cartData.length;
       }
       });
+
+    this.store.select<any>('paymentState').subscribe((paymentState: any) =>  {
+      debugger;
+      if(paymentState && paymentState.cartData) {
+        this.cartCount = paymentState.cartData.length;
+      }
+    });
   }
 
   logOutHandle(event: any) {

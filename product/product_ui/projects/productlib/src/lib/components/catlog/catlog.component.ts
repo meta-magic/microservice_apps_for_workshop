@@ -52,9 +52,17 @@ export class CatlogComponent implements OnInit {
         .then((res: any) => {
           this._sharedService._commonService.showLoader = false;
           this._sharedService._commonService.setInfoMsgCollection(res.message);
-          this.store.dispatch(new AddToCart(res.data));
+          this.getCartData();
         });
   }
+
+
+    getCartData() {
+        this._sharedService._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
+            .then((res: any) => {
+                this.store.dispatch(new AddToCart(res.data.shoppingCart));
+            });
+    }
 
   productDetailsHandle(product: Product) {
     this._router.navigate(['../catlog', product.id], {relativeTo: this.route});

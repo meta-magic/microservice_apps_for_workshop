@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {AmexioWidgetModule} from "amexio-ng-extensions";
+import {StoreModule} from "@ngrx/store";
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule, HttpClientModule, AmexioWidgetModule,
+    StoreModule.forRoot({}),
     RouterModule.forRoot(routes, { useHash : true})
   ],
   providers: [CookieService],

@@ -24,7 +24,7 @@ export function ProductReducer(state = INITIAL_STATE, action: any) {
     case ProductActionType.addToCart: {
       return {
         ...state,
-        cartData: operationClass.addCartData()
+        cartData: action.data
       };
     }
     break;

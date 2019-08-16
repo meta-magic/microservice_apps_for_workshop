@@ -6,6 +6,8 @@ export const SERVICE_URL = {
   ADD_PRODUCT : BASE_URL + 'productms/api/product/',
   GET_ALL_PRODUCT : BASE_URL + 'productms/api/product/',
   ADD_TO_CART: BASE_URL + 'shoppingcartms/api/shoppingcart/',
-  ADD_REVIEW: BASE_URL + 'productreviewms/api/review/'
+  ADD_REVIEW: BASE_URL + 'productreviewms/api/review/',
+  GET_CART_PRODUCT : BASE_URL + 'shoppingcartms/api/shoppingcart/',
+
 };
 
