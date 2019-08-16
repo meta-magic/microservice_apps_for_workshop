@@ -30,14 +30,11 @@ export class HomeComponent implements OnInit {
     });
 
     this.store.select<any>('cartState').subscribe((cartState: any) =>  {
-      try {
-        if(cartState && cartState.cartData) {
-          this.cartCount = cartState.cartData.shoppingCart.length;
-        }
-      } catch(err: any) {
+      if(cartState && cartState.cartData && cartState.cartData.hasOwnProperty('shoppingCart')) {
+        this.cartCount = cartState.cartData.shoppingCart.length;
+      } else{
         this.cartCount = 0;
       }
-
     });
 
 
