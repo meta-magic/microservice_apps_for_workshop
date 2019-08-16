@@ -14,6 +14,7 @@ import {SharedService} from "sharedlib";
 })
 export class CartComponent implements OnInit {
   cartInfo: CartResponse;
+  hasRecordFound = true;
   constructor(  private _sharedService: SharedService,
                 private _router: Router,
                 private _store: Store<CartNamespace.ICart>,
@@ -36,6 +37,7 @@ export class CartComponent implements OnInit {
         .then((res: any) => {
           this._sharedService._commonService.showLoader = false;
             this.cartInfo = <CartResponse>res.data;
+            this.hasRecordFound = this.cartInfo.shoppingCart.length > 0 ? true : false;
             //this._store.dispatch(new AddToCart(res.data));
         });
   }
