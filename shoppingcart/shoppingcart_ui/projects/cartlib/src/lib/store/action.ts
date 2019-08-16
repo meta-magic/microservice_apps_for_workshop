@@ -5,10 +5,10 @@
 import {Action} from 'redux';
 import {CartResponse} from "../models/cart.model";
 export enum CartActionType {
-  addToCart = 'addToCart'
+  addToShoopingCart = 'addToShoopingCart'
 }
 
-export class AddToCart implements Action {
-  readonly type = CartActionType.addToCart;
+export class AddToShoopingCart implements Action {
+  readonly type = CartActionType.addToShoopingCart;
   constructor(public data: CartResponse) {}
 }

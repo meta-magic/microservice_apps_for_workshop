@@ -24,16 +24,16 @@ export class HomeComponent implements OnInit {
       });
 
     this.store.select<any>('paymentState').subscribe((paymentState: any) =>  {
+
       if(paymentState && paymentState.cartData) {
         this.cartCount = paymentState.cartData.length;
       }
     });
 
     this.store.select<any>('cartState').subscribe((cartState: any) =>  {
+
       if(cartState && cartState.cartData && cartState.cartData.hasOwnProperty('shoppingCart')) {
         this.cartCount = cartState.cartData.shoppingCart.length;
-      } else{
-        this.cartCount = 0;
       }
     });
 

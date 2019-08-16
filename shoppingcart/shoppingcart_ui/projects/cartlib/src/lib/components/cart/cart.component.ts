@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SERVICE_URL} from "../../constant/service.constant";
 import {select, Store} from '@ngrx/store';
 import {CartNamespace} from "../../store/state";
-import {AddToCart} from "../../store/action";
+import {AddToShoopingCart} from "../../store/action";
 import {SharedService} from "sharedlib";
 
 
@@ -38,7 +38,7 @@ export class CartComponent implements OnInit {
     this._sharedService._httpService.restCall(SERVICE_URL.GET_CART_PRODUCT, 'get').toPromise()
         .then((res: any) => {
           this._sharedService._commonService.showLoader = false;
-            this._store.dispatch(new AddToCart(res.data));
+            this._store.dispatch(new AddToShoopingCart(res.data));
         });
   }
 

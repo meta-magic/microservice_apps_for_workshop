@@ -12,7 +12,7 @@ export const INITIAL_STATE: CartNamespace.ICart = {
 
 export function CartReducer(state = INITIAL_STATE, action: any) {
   switch (action.type) {
-    case CartActionType.addToCart: {
+    case CartActionType.addToShoopingCart: {
       return {
         ...state,
         cartData: action.data
