@@ -1,10 +1,11 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
+import {CartResponse} from "../models/cart.model";
 /**
  * Created by dattaram on 12/8/19.
  */
 export namespace CartNamespace {
 export interface ICart{
-  cartData: any[];
+  cartData: CartResponse;
 }
 
   export const cartState =  createFeatureSelector<CartNamespace.ICart>('cartState');

@@ -1,7 +1,7 @@
 <amexio-row>
   <amexio-column [size]="'3'" *ngFor="let data of productList">
     <amexio-card-ce >
-      <amexio-header-ce [height]="'30px'" align="start" [color]="'white'"  [background]="'linear-gradient(to right, 	#A52A2A, 	#A52A2A, 	#A52A2A)'">
+      <amexio-header-ce [height]="'30px'" align="start" [color]="'white'"  amexioColorPalette [color-palette]="'vibrant'">
         <amexio-label [size]="'medium'">
           {{data.name}}
         </amexio-label>

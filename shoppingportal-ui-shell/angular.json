@@ -29,7 +29,7 @@
             "styles": [
               "src/styles.scss",
               "node_modules/font-awesome/scss/font-awesome.scss",
-              "node_modules/amexio-ng-extensions/styles/css/at-md-blue.css"
+              "node_modules/amexio-ng-extensions/styles/css/at-md-z-flag-india.css"
             ],
             "scripts": []
           },

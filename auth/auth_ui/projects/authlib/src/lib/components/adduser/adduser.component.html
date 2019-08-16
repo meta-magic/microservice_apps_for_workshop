@@ -5,7 +5,7 @@
         <amexio-layout-item> &nbsp;</amexio-layout-item>
         <amexio-layout-item style="min-width: 300px;">
           <amexio-card-ce>
-            <amexio-header-ce [border-bottom]="true" [height]="'45px'">
+            <amexio-header-ce [border-bottom]="true" [height]="'45px'" amexioColorPalette [color-palette]="'vibrant'">
               <amexio-label size="small">
                 Add User
               </amexio-label>
@@ -43,9 +43,9 @@
                                 </amexio-text-input>
                             </amexio-column>
                             <amexio-column size="6">
-                            <amexio-number-input  allow-blank="false" formControlName="PhoneNo" [(ngModel)]="addUserModel.phoneNo" [field-label]="'Phone Number'"
+                            <amexio-text-input  allow-blank="false" formControlName="PhoneNo" [(ngModel)]="addUserModel.phoneNo" [field-label]="'Phone Number'"
                               [place-holder]="'Enter Phone No.'">
-                           </amexio-number-input>
+                           </amexio-text-input>
                             </amexio-column>
                            </amexio-row>
                 </form>

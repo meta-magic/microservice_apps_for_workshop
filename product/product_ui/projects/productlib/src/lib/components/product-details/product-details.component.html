@@ -3,7 +3,7 @@
     <amexio-column [size]="'2'"></amexio-column>
 <amexio-column [size]="'8'">
         <amexio-card-ce [align]="'center'">
-                <amexio-header-ce align="left" amexioColorPalette [color-palette]="'amexio-theme-color1'">
+                <amexio-header-ce align="left" amexioColorPalette [color-palette]="'vibrant'">
                       <amexio-image style="cursor: pointer;"  (onClick)="backClickHandle()" [icon-class]="'fa fa-arrow-left'" [tooltip]="'Back'"></amexio-image>
                      <amexio-label size="medium-bold"> Product Details</amexio-label>
                 </amexio-header-ce>
@@ -17,13 +17,13 @@
                               <amexio-label><b>Name</b>: {{productDetails.name}}</amexio-label><br>
                               <amexio-label><b>Description</b>: {{productDetails.description}}</amexio-label><br>
                               <amexio-label><b>Price</b>: {{productDetails.price}}</amexio-label><br>
-                            <hr>
-                     <amexio-row>
-                        <amexio-label size="medium-bold">Reviews</amexio-label>
-                        <div class="buttoncss">
-                            <amexio-button [size]="'small'" [type]="'theme-color'"  (onClick)="onAddReviewHandle()" label="Add Review"></amexio-button>
-                        </div>
-                     </amexio-row><br>
+                         <!--   <hr>
+                             <amexio-row>
+                                <amexio-label size="medium-bold">Reviews</amexio-label>
+                                <div class="buttoncss">
+                                    <amexio-button [size]="'small'" [type]="'theme-color'"  (onClick)="onAddReviewHandle()" label="Add Review"></amexio-button>
+                                </div>
+                             </amexio-row><br>
                               <div *ngFor="let item of productDetails.reviews">
                                <amexio-label><b>User</b>: {{item.user}}</amexio-label><br>
                                <amexio-label><b>Review Description</b>: {{item.reviewdescription}}</amexio-label><br>
@@ -35,7 +35,7 @@
                                        name="rating"
                                        [read-only]="false">
                                </amexio-rating-input><br><br><hr><br>
-                              </div>               
+                              </div> -->
                       </amexio-column>
                   </amexio-row>
                 </amexio-body-ce>

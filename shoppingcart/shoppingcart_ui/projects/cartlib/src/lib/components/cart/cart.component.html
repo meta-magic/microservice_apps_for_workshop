@@ -1,5 +1,5 @@
 <h2 *ngIf="!hasRecordFound"> 0 Item In Cart. Please add Item.</h2>
-<ng-container *ngIf="cartInfo && cartInfo.shoppingCart.length > 0 ">
+<ng-container *ngIf="cartInfo">
   <amexio-row>
     <amexio-column [size]="'8'">
       <amexio-datagrid [enable-column-filter]="false"

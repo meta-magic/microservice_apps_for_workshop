@@ -4,4 +4,8 @@
 export class CartResponse {
   sum: number;
   shoppingCart: any[] = [];
+  constructor() {
+    this.sum = 0;
+    this.shoppingCart = [];
+  }
 }
