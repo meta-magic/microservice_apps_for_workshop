@@ -18,7 +18,6 @@ spec:
   template:
     metadata:
       labels:
-        name: productui
         version: v1
         release: stable
         tier: fe
