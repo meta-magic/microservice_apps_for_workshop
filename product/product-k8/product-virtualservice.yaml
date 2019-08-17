@@ -23,6 +23,7 @@ spec:
     route:
     - destination:
         host: productui-svc.shoppingportal.svc.cluster.local
+        subset: stable # match v1 only
         port:
           number: 80   
   - match:
