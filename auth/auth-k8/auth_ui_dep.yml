@@ -1,14 +1,14 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: shoppingcartui-deploy
+  name: authui-deploy
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
       zone: prod
-      app: shoppingcartui
+      app: authui
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -23,11 +23,17 @@ spec:
         tier: fe
         zone: prod
         managed-by: m2
-        app: shoppingcartui
+        app: authui
     spec:
       containers:
-        - name: shoppingcartui-ctr
-          image: metamagicglobal/shoppingcartui:k8 
+        - name: authui-ctr
+          image: metamagicglobal/authui:k8 
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 80                                  
+          livenessProbe:
+            httpGet:
+              path: /authui/appinfo.json
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 15 

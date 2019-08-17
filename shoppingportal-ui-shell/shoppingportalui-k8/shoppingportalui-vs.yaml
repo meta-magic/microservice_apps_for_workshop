@@ -19,9 +19,13 @@ spec:
           number: 80
   - match:
     - uri:
-        prefix: /kiali
+        prefix: /shoppingportal
+      headers:
+        user-agent:
+          regex: ".*Firefox.*"
     route:
     - destination:
-        host: kiali.istio-system.svc.cluster.local
+        host: shoppingportalui-svc.shoppingportal.svc.cluster.local
+        subset: canary # match v2 only
         port:
-          number: 80          
+          number: 80           

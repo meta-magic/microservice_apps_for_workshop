@@ -1,10 +1,10 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: product-destination-rules
+  name: shoppingportal-destination-rules
   namespace: shoppingportal    
 spec:
-  host: productui-svc.shoppingportal.svc.cluster.local
+  host: shoppingportalui-svc.shoppingportal.svc.cluster.local
   subsets:
   - name: stable
     labels:

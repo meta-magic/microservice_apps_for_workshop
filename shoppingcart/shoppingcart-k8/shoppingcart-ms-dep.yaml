@@ -7,7 +7,6 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: shoppingcartms
       zone: prod
       app: shoppingcartms
   minReadySeconds: 10
@@ -19,8 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        name: shoppingcartms
-        version: v1
+        version: "1.0.0"
         release: stable
         tier: be
         zone: prod
@@ -30,7 +28,7 @@ spec:
       containers:
         - name: shoppingcartms-ctr
           image: metamagicglobal/shoppingcartservice_k8
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 8082
           env:

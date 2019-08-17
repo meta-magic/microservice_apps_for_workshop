@@ -1,14 +1,14 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: shoppingcartui-deploy
+  name: paymentui-deploy
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
       zone: prod
-      app: shoppingcartui
+      app: paymentui
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -23,11 +23,11 @@ spec:
         tier: fe
         zone: prod
         managed-by: m2
-        app: shoppingcartui
+        app: paymentui
     spec:
       containers:
-        - name: shoppingcartui-ctr
-          image: metamagicglobal/shoppingcartui:k8 
+        - name: paymentui-ctr
+          image: metamagicglobal/paymentui:k8 
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 80                                  

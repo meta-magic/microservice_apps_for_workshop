@@ -8,4 +8,4 @@ spec:
   subsets:
   - name: stable
     labels:
-      version: v1
+      version: "1.0.0"

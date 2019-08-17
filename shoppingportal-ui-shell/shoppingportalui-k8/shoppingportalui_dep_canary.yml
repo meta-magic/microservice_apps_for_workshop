@@ -1,14 +1,14 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: shoppingcartui-deploy
+  name: shoppingportalui-deploy-canary
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
       zone: prod
-      app: shoppingcartui
+      app: shoppingportalui
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -18,16 +18,22 @@ spec:
   template:
     metadata:
       labels:
-        version: "1.0.0"
+        version: "2.0.0"
         release: stable
         tier: fe
         zone: prod
         managed-by: m2
-        app: shoppingcartui
+        app: shoppingportalui
     spec:
       containers:
-        - name: shoppingcartui-ctr
-          image: metamagicglobal/shoppingcartui:k8 
+        - name: shoppingportalui-ctr
+          image: metamagicglobal/shoppingportalui_v2:k8 
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 80                                  
+          livenessProbe:
+            httpGet:
+              path: /shoppingportalui/appinfo.json
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 15 

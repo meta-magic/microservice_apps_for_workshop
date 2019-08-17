@@ -4,15 +4,9 @@ metadata:
   name: shoppingportalui-svc
   namespace: shoppingportal
   labels:
-    name: shoppingportaluisvc
+    app: shoppingportaluisvc
 spec:
   selector:
-        name: shoppingportalui
-        version: "1.0.0"
-        release: stable
-        tier: fe
-        zone: prod
-        managed-by: m2
         app: shoppingportalui
   ports:
   - port: 80

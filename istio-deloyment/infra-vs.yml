@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: auth-vs
+  name: infra-vs
   namespace: shoppingportal  
 spec:
   gateways:
@@ -11,17 +11,16 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /authms
+        prefix: /kiali
     route:
     - destination:
-        host: auth-svc.shoppingportal.svc.cluster.local
+        host: kiali.istio-system.svc.cluster.local
         port:
-          number: 80
+          number: 80   
   - match:
-    - uri:
-        prefix: /authui
+    - port: 15032
     route:
     - destination:
-        host: authui-svc.shoppingportal.svc.cluster.local
+        host: jaeger-query.istio-system.svc.cluster.local
         port:
-          number: 80          
+          number: 16686     

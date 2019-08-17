@@ -7,7 +7,6 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: authms
       zone: prod
       app: authms
   minReadySeconds: 10
@@ -19,8 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        name: authms
-        version: v1
+        version: "1.0.0"
         release: stable
         tier: be
         zone: prod
@@ -30,9 +28,9 @@ spec:
       containers:
         - name: authms-ctr
           image: metamagicglobal/authservice_k8
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
-          - containerPort: 8082
+          - containerPort: 8082          
           env:
           - name: MONO_HOST
             valueFrom:

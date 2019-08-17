@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: productui-deploy
+  name: productui-deploy-canary
   namespace: shoppingportal
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        version: "1.0.0"
+        version: "2.0.0"
         release: stable
         tier: fe
         zone: prod
@@ -27,7 +27,13 @@ spec:
     spec:
       containers:
         - name: productui-ctr
-          image: metamagicglobal/productui:k8 
-          imagePullPolicy: IfNotPresent
+          image: metamagicglobal/productui_v2:k8 
+          imagePullPolicy: Always
           ports:
-          - containerPort: 80                                
+          - containerPort: 80      
+          livenessProbe:
+            httpGet:
+              path: /productui/appinfo.json
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 15                                       

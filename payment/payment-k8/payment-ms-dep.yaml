@@ -1,15 +1,14 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: productms-deploy
+  name: paymentms-deploy
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: productms
       zone: prod
-      app: productms
+      app: paymentms
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -19,18 +18,17 @@ spec:
   template:
     metadata:
       labels:
-        name: productms
         version: v1
         release: stable
         tier: be
         zone: prod
         managed-by: m2
-        app: productms
+        app: paymentms
     spec:
       containers:
-        - name: productms-ctr
-          image: metamagicglobal/productservice_k8
-          imagePullPolicy: Always
+        - name: paymentms-ctr
+          image: metamagicglobal/paymentservice_k8
+          imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 8082
           env:
@@ -44,8 +42,13 @@ spec:
               secretKeyRef: 
                 name: mongosecret
                 key: mongoport
-          - name: REVIEW_APP_BASE_URL
+          - name: ORDER_APP_BASE_URL
             valueFrom:
               secretKeyRef: 
-                name: productsecret
-                key: review_app_base_url                
+                name: ordersecret
+                key: order_app_base_url                                
+          - name: SHOPPINGCART_APP_BASE_URL
+            valueFrom:
+              secretKeyRef: 
+                name: ordersecret
+                key: shoppingcart_app_base_url

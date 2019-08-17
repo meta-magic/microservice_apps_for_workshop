@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: grafana-vs
+  namespace: shoppingportal  
+spec:
+  gateways:
+  - infra-gateway
+  hosts:
+   - "*"
+  http: 
+  - match:
+    - port: 15031
+    route:
+    - destination:
+        host: grafana.istio-system.svc.cluster.local
+        port:
+          number: 3000     

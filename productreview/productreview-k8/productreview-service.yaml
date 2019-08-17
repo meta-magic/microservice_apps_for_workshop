@@ -4,9 +4,7 @@ metadata:
   name: productreview-svc
   namespace: shoppingportal
 spec:
-  type: LoadBalancer
   selector: 
-    name: productreviewms
     app: productreviewms
   ports:
   - protocol: TCP

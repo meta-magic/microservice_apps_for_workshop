@@ -1,15 +1,14 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: orderms-deploy
+  name: productms-deploy
   namespace: shoppingportal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: orderms
       zone: prod
-      app: orderms      
+      app: productms
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -19,18 +18,17 @@ spec:
   template:
     metadata:
       labels:
-        name: orderms
-        version: v1
+        version: "1.0.0"
         release: stable
         tier: be
         zone: prod
         managed-by: m2
-        app: orderms      
+        app: productms
     spec:
       containers:
-        - name: orderms-ctr
-          image: metamagicglobal/orderservice_k8
-          imagePullPolicy: Always
+        - name: productms-ctr
+          image: metamagicglobal/productservice_k8
+          imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 8082
           env:
@@ -44,8 +42,8 @@ spec:
               secretKeyRef: 
                 name: mongosecret
                 key: mongoport
-          - name: PRODUCT_APP_BASE_URL
+          - name: REVIEW_APP_BASE_URL
             valueFrom:
               secretKeyRef: 
-                name: shoppingcartsecret
-                key: product_app_base_url                                
+                name: productsecret
+                key: review_app_base_url                

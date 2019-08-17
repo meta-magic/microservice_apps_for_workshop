@@ -4,9 +4,7 @@ metadata:
   name: order-svc
   namespace: shoppingportal
 spec:
-  type: LoadBalancer
   selector: 
-    name: orderms
     app: orderms        
   ports:
   - protocol: TCP
