@@ -31,10 +31,4 @@ spec:
           image: metamagicglobal/shoppingportalui_v2:k8 
           imagePullPolicy: IfNotPresent
           ports:
-          - containerPort: 80                                  
-          livenessProbe:
-            httpGet:
-              path: /shoppingportalui/appinfo.json
-              port: 80
-            initialDelaySeconds: 15
-            periodSeconds: 15 
+          - containerPort: 80
