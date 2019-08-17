@@ -8,7 +8,7 @@ spec:
   subsets:
   - name: stable
     labels:
-        version: "1.0.0"
+        version: v1
   - name: canary
     labels:
-        version: "2.0.0"
+        version: v2

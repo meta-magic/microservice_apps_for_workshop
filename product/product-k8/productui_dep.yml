@@ -18,7 +18,8 @@ spec:
   template:
     metadata:
       labels:
-        version: "1.0.0"
+        name: productui
+        version: v1
         release: stable
         tier: fe
         zone: prod

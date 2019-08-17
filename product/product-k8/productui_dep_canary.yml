@@ -18,8 +18,9 @@ spec:
   template:
     metadata:
       labels:
-        version: "2.0.0"
-        release: stable
+        name: productui
+        version: v2
+        release: canary
         tier: fe
         zone: prod
         managed-by: m2
@@ -30,10 +31,4 @@ spec:
           image: metamagicglobal/productui_v2:k8 
           imagePullPolicy: Always
           ports:
-          - containerPort: 80      
-          livenessProbe:
-            httpGet:
-              path: /productui/appinfo.json
-              port: 80
-            initialDelaySeconds: 15
-            periodSeconds: 15                                       
+          - containerPort: 80
