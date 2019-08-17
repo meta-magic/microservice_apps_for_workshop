@@ -20,7 +20,7 @@ spec:
       labels:
         name: productui
         version: v2
-        release: canary
+        release: stable
         tier: fe
         zone: prod
         managed-by: m2
