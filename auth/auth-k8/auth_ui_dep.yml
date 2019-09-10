@@ -28,7 +28,7 @@ spec:
       containers:
         - name: authui-ctr
           image: metamagicglobal/authui:k8 
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 80                                  
           livenessProbe:
