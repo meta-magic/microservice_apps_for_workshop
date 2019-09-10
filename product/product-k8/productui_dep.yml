@@ -28,6 +28,6 @@ spec:
       containers:
         - name: productui-ctr
           image: metamagicglobal/productui:k8 
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 80                                
