@@ -28,6 +28,6 @@ spec:
       containers:
         - name: orderui-ctr
           image: metamagicglobal/orderui:k8 
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 80                                  
