@@ -28,6 +28,6 @@ spec:
       containers:
         - name: shoppingcartui-ctr
           image: metamagicglobal/shoppingcartui:k8 
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 80                                  
