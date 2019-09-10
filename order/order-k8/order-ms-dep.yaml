@@ -28,7 +28,7 @@ spec:
       containers:
         - name: orderms-ctr
           image: metamagicglobal/orderservice_k8
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 8082
           env:
