@@ -28,6 +28,6 @@ spec:
       containers:
         - name: paymentui-ctr
           image: metamagicglobal/paymentui:k8 
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 80                                  
