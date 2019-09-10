@@ -29,6 +29,6 @@ spec:
       containers:
         - name: shoppingportalui-ctr
           image: metamagicglobal/shoppingportalui:k8 
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 80                                  
